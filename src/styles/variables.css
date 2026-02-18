@@ -1,0 +1,78 @@
+/* -------------------------
+  CSS Variables 
+-------------------------- */
+
+:root {
+  /* 
+    Global CSS Variables
+    Use these variables in any CSS file with:
+  
+      var(--variable-name)
+  
+    Example:
+      padding: var(--space-md);
+      font-size: var(--font-size-lg);
+      color: var(--color-primary);
+      border-radius: var(--radius-sm);
+  */
+
+  /* Colors */
+  --color-primary-light: hsl(220, 95%, 65%);
+  --color-primary:       hsl(220, 95%, 55%);
+  --color-primary-dark:  hsl(220, 95%, 45%);
+
+  --color-text-light: hsl(0, 0%, 30%);
+  --color-text: hsl(0, 0%, 10%);
+  --color-text-dark: hsl(0, 0%, 0%);
+
+  --color-bg-light: hsl(0, 0%, 100%);
+  --color-bg: hsl(0, 0%, 96%);
+  --color-bg-dark: hsl(0, 0%, 92%);
+
+  /* Spacing */
+  --space-sm: clamp(0.5rem, 1vw, 0.75rem); /* 8px -> 12px */
+  --space-md: clamp(1rem, 2vw, 1.5rem); /* 16px -> 24px */
+  --space-lg: clamp(2rem, 4vw, 3rem); /* 32px -> 48px */
+  --space-xl: clamp(4rem, 6vw, 6rem); /* 64px -> 96px */
+
+  /* Border */
+  --border-sm: 1px;
+  --border-md: 2px;
+  --border-lg: 4px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Typography */
+  --font-family: "Montserrat", sans-serif;
+
+  --font-size-sm: clamp(
+    0.95rem,
+    0.9rem + 0.25vw,
+    1.05rem
+  ); /* ~15.2px -> 16.8px (texto) */
+  --font-size-md: clamp(
+    1.05rem,
+    0.98rem + 0.35vw,
+    1.25rem
+  ); /* ~16.8px -> 20px (destaques/botões) */
+  --font-size-lg: clamp(
+    1.6rem,
+    1.3rem + 1.2vw,
+    2.25rem
+  ); /* ~25.6px -> 36px (título de seção) */
+  --font-size-xl: clamp(
+    2.6rem,
+    2rem + 2.8vw,
+    4.25rem
+  ); /* ~41.6px -> 68px (hero) */
+
+  --font-weight-sm: 400;
+  --font-weight-md: 500;
+  --font-weight-lg: 700;
+
+  /* Container */
+  --container-max-width: 1200px;
+  --container-padding-inline: clamp(1.5rem, 4vw, 4rem);
+}

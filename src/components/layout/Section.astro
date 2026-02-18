@@ -1,0 +1,60 @@
+---
+import Container from "./Container.astro";
+
+type Variant = "primary" | "bg" | "text";
+
+type Props = {
+  id: string;
+  title: string;
+  variant?: Variant;
+};
+
+const { id, title, variant = "bg" } = Astro.props;
+---
+
+<section id={id} class={`section section-${variant}`}>
+  <Container>
+    <div class="section-layout">
+      <h2 class="section-heading">{title}</h2>
+      <slot />
+    </div>
+  </Container>
+</section>
+
+<style>
+  .section-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .section {
+    width: 100%;
+    margin-inline: auto;
+  }
+  .section-primary {
+    background-color: var(--color-primary);
+  }
+  .section-bg {
+    background-color: var(--color-bg);
+  }
+  .section-text {
+    background-color: var(--color-text);
+  }
+  .section-heading {
+    text-align: center;
+    line-height: 1.2;
+    font-family: var(--font-family);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-lg);
+  }
+  .section-primary .section-heading {
+    color: var(--color-bg);
+  }
+  .section-bg .section-heading {
+    color: var(--color-text);
+  }
+  .section-text .section-heading {
+    color: var(--color-bg);
+  }
+</style>

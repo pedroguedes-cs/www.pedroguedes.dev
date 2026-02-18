@@ -1,0 +1,36 @@
+/* -------------------------
+   Basic CSS Reset
+-------------------------- */
+
+/* Remove default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Smooth transition when navigating to anchors */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure the page always fills at least the full viewport height */
+body {
+    min-height: 100vh;
+}
+
+/* Set a consistent base for inputs */
+input, 
+button, 
+textarea, 
+select {
+    font: inherit;
+}
+
+/* Make images easier to handle */
+img, 
+picture, 
+video {
+    display: block;
+    max-width: 100%;
+}
