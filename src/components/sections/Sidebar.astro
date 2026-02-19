@@ -10,13 +10,17 @@ import {
   Mail,
   Eclipse,
 } from "@lucide/astro";
+
+const currentPath = Astro.url.pathname;
+const homeHref = currentPath === "/" ? "#" : "/";
+const projectsHref = currentPath === "/projects" ? "#" : "/projects";
 ---
 
 <div class="overlay"></div>
 
 <div class="sidebar">
   <nav class="sidebar-nav">
-    <a href="/" class="navlink">
+    <a href={homeHref} class="navlink">
       <House class="icon icon-md icon-contrast" />
       <span>Home</span>
     </a>
@@ -24,7 +28,7 @@ import {
       <UserRound class="icon icon-md icon-contrast" />
       <span>About</span>
     </a>
-    <a href="/projects" class="navlink">
+    <a href={projectsHref} class="navlink">
       <Laptop class="icon icon-md icon-contrast" />
       <span>Projects</span>
     </a>
