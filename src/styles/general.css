@@ -1,11 +1,14 @@
 html {
-    font-family: var(--font-family);
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+  font-family: var(--font-family);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 body {
-    background-color: var(--color-base);
+  background-color: var(--color-base);
 }
 main {
-    padding-top: calc(var(--header-height) + var(--space-sm));
+  padding-top: var(--main-padding-top);
+}
+section {
+    scroll-margin-top: var(--main-padding-top);
 }

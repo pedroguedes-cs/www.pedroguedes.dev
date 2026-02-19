@@ -1,0 +1,167 @@
+---
+import {
+  House,
+  UserRound,
+  Laptop,
+  Wrench,
+  Send,
+  Github,
+  Linkedin,
+  Mail,
+  Eclipse,
+} from "@lucide/astro";
+
+const currentPath = Astro.url.pathname;
+const homeHref = currentPath === "/" ? "#" : "/";
+const projectsHref = currentPath === "/projects" ? "#" : "/projects";
+---
+
+<div class="overlay"></div>
+
+<div class="sidebar">
+  <nav class="sidebar-nav">
+    <a href={homeHref} class="navlink">
+      <House class="icon icon-md icon-contrast" />
+      <span>Home</span>
+    </a>
+    <a href="/#about" class="navlink">
+      <UserRound class="icon icon-md icon-contrast" />
+      <span>About</span>
+    </a>
+    <a href={projectsHref} class="navlink">
+      <Laptop class="icon icon-md icon-contrast" />
+      <span>Projects</span>
+    </a>
+    <a href="/#skills" class="navlink">
+      <Wrench class="icon icon-md icon-contrast" />
+      <span>Skills</span>
+    </a>
+    <a href="/#contact" class="navlink">
+      <Send class="icon icon-md icon-contrast" />
+      <span>Contact</span>
+    </a>
+  </nav>
+  <div class="sidebar-social-media-wrapper">
+    <a
+      href="https://github.com/pedroguedes-cs"
+      class="social-media-link"
+      target="_blank"
+    >
+      <Github class="icon icon-md icon-contrast" />
+      <span>GitHub</span>
+    </a>
+    <a
+      href="https://www.linkedin.com/in/pedroguedes-cs/"
+      class="social-media-link"
+      target="_blank"
+    >
+      <Linkedin class="icon icon-md icon-contrast" />
+      <span>Linkedin</span>
+    </a>
+    <a
+      href="mailto:pedroguedescs@gmail.com"
+      class="social-media-link"
+      target="_blank"
+    >
+      <Mail class="icon icon-md icon-contrast" />
+      <span>Mail</span>
+    </a>
+  </div>
+  <div class="icon-wrapper light-mode-button">
+    <Eclipse class="icon icon-md icon-contrast" />
+  </div>
+</div>
+
+<style>
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 998;
+    background-color: var(--overlay-color);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--sidebar-transition);
+  }
+  .overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .sidebar {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 80%;
+    max-width: var(--sidebar-max-width);
+    transform: translateX(-100%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background-color: var(--color-base-light);
+
+    transition: transform var(--sidebar-transition);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-nav,
+  .sidebar-social-media-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-social-media-wrapper {
+    padding-block: var(--space-md);
+    border-block: var(--border-md) var(--color-base) solid;
+  }
+  .navlink,
+  .social-media-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background-color: var(--color-base-light);
+    padding: var(--space-sm);
+    border: none;
+    border-radius: var(--radius-lg);
+  }
+  .navlink span,
+  .social-media-link span {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-md);
+    color: var(--color-contrast);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .navlink:hover,
+    .social-media-link:hover {
+      filter: var(--icon-wrapper-filter);
+    }
+  }
+</style>
+
+<script>
+  const sidebar = document.querySelector(".sidebar");
+  const overlay = document.querySelector(".overlay");
+  const menuButton = document.querySelector(".header-menu-button");
+  function toggleSidebar() {
+    sidebar?.classList.toggle("open");
+    overlay?.classList.toggle("show");
+  }
+
+  menuButton?.addEventListener("click", toggleSidebar);
+  overlay?.addEventListener("click", toggleSidebar);
+
+  function toggleLightMode() {
+    document.body.classList.toggle("dark-mode");
+  }
+  const lightModeButton = document.querySelector(".light-mode-button");
+  lightModeButton?.addEventListener("click", toggleLightMode);
+</script>
