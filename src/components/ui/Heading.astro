@@ -1,0 +1,33 @@
+---
+import type { Variant } from "../variant"
+
+type Props = {
+  title: string;
+  variant?: Variant;
+};
+
+const { title, variant = "text" } = Astro.props;
+---
+
+<h2 class={`section-heading section-heading-${variant}`}>
+    {title}
+</h2>
+
+<style>
+  .section-heading {
+    text-align: center;
+    line-height: 1.2;
+    font-family: var(--font-family);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-xl);
+  }
+  .section-heading-base {
+    color: var(--color-base);
+  }
+  .section-heading-contrast {
+    color: var(--color-contrast);
+  }
+  .section-heading-primary {
+    color: var(--color-primary);
+  }
+</style>

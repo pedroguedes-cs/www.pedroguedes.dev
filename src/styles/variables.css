@@ -21,13 +21,15 @@
   --color-primary:       hsl(220, 95%, 55%);
   --color-primary-dark:  hsl(220, 95%, 45%);
 
-  --color-text-light: hsl(0, 0%, 30%);
-  --color-text: hsl(0, 0%, 10%);
-  --color-text-dark: hsl(0, 0%, 0%);
+  --color-contrast-light: hsl(0, 0%, 30%);
+  --color-contrast: hsl(0, 0%, 10%);
+  --color-contrast-dark: hsl(0, 0%, 0%);
 
-  --color-bg-light: hsl(0, 0%, 100%);
-  --color-bg: hsl(0, 0%, 96%);
-  --color-bg-dark: hsl(0, 0%, 92%);
+  --color-base-light: hsl(0, 0%, 100%);
+  --color-base: hsl(0, 0%, 96%);
+  --color-base-dark: hsl(0, 0%, 92%);
+
+  --color-neutral: hsl(0, 0%, 82%);
 
   /* Spacing */
   --space-sm: clamp(0.5rem, 1vw, 0.75rem); /* 8px -> 12px */
@@ -70,9 +72,16 @@
 
   --font-weight-sm: 400;
   --font-weight-md: 500;
-  --font-weight-lg: 700;
+  --font-weight-lg: 600;
+  --font-weight-xl: 700;
+
+  /* Section */
+  --section-padding: var(--space-xl);
 
   /* Container */
   --container-max-width: 1200px;
   --container-padding-inline: clamp(1.5rem, 4vw, 4rem);
+
+  /* Header */
+  --header-height: 5rem;
 }

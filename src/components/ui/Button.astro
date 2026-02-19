@@ -1,0 +1,63 @@
+---
+import type { Variant } from "../variant";
+
+type Props = {
+  href: string;
+  label: string;
+  outline?: boolean;
+  variant?: Variant;
+};
+
+const { href = "#", label, outline = false, variant = "primary" } = Astro.props;
+---
+
+<a href={href} class={outline ? `button button-outline button-outline-${variant}` : `button button-${variant}`}>
+  {label}
+</a>
+
+
+<style>
+  .button {
+    display: inline-block;
+
+    padding: var(--space-sm) var(--space-md);
+    border: solid var(--border-md);
+    border-radius: var(--radius-md);
+      
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-lg);
+
+    cursor: pointer;
+  }
+  .button-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-base);
+  }
+  .button-base {
+    background-color: var(--color-base);
+    border-color: var(--color-base);
+    color: var(--color-contrast);
+  }
+  .button-contrast {
+    background-color: var(--color-contrast);
+    border-color: var(--color-contrast);
+    color: var(--color-base);
+  }
+  .button-outline {
+    background-color: transparent;
+  }
+  .button-outline-base {
+    border-color: var(--color-base);
+    color: var(--color-base);
+  }
+  .button-outline-primary {
+    border-color: var(--color-primary);
+    color: var(--color-primary); 
+  }
+  .button-outline-contrast {
+    border-color: var(--color-contrast);
+    color: var(--color-contrast); 
+  }
+</style>

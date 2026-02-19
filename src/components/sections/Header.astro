@@ -1,0 +1,44 @@
+---
+import { PanelsTopLeft } from "@lucide/astro";
+
+import Container from "../layout/Container.astro";
+import Heading from "../ui/Heading.astro";
+---
+
+<header class="header">
+  <Container>
+    <div class="header-layout">
+      <div class="icon-wrapper">
+        <PanelsTopLeft class="icon icon-md icon-text" />
+      </div>
+      <a href="#" class="icon-wrapper">
+        <Heading title="Pedro" variant="contrast" />
+      </a>
+    </div>
+  </Container>
+</header>
+
+<style>
+  .header {
+    width: 100%;
+    position: fixed;
+    z-index: 998;
+    top: var(--space-sm);
+
+    background-color: transparent;
+  }
+  .header-layout {
+    width: 100%;
+    height: var(--header-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+
+    background-color: var(--color-base-light);
+    padding: var(--space-sm) var(--space-md);
+    border: var(--border-md) var(--color-base) solid;
+    border-radius: var(--radius-md);
+  }
+</style>

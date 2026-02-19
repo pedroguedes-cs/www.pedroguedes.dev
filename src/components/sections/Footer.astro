@@ -1,0 +1,93 @@
+---
+import { Github, Linkedin, Mail } from "@lucide/astro";
+import pedroImage from '../../assets/pedro.jpeg'
+
+import Container from "../layout/Container.astro";
+import Button from "../ui/Button.astro";
+---
+
+<footer class="footer">
+  <Container>
+    <div class="footer-layout">
+      <div class="footer-content">
+        <img class="footer-image" src={pedroImage.src} alt="Pedro Guedes">
+        <div class="footer-social-media-wrapper">
+          <a href="https://github.com/pedroguedes-cs" class="icon-wrapper" target="_blank">
+              <Github class="icon icon-md icon-contrast" />
+          </a>
+          <a href="https://www.linkedin.com/in/pedroguedes-cs/" class="icon-wrapper" target="_blank">
+              <Linkedin class="icon icon-md icon-contrast" />
+          </a>
+          <a href="mailto:pedroguedescs@gmail.com" class="icon-wrapper" target="_blank">
+              <Mail class="icon icon-md icon-contrast" />
+          </a>
+        </div>
+        <Button href="/#contact" label="Contact me" variant="contrast" />
+      </div>
+      <div class="footer-message">
+        Designed and developed by me
+      </div>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  .footer {
+    width: 100%;
+    background-color: transparent;
+    padding-block: var(--space-sm);
+  }
+  .footer-layout {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--color-neutral);
+    border: var(--border-md) var(--color-base) solid;
+    border-radius: var(--radius-md);
+  }
+  .footer-content {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+
+  }
+  .footer-image {
+
+    width: calc(var(--font-size-xl) * 3);
+    height: calc(var(--font-size-xl) * 3);
+    object-fit: cover;
+    object-position: top;
+
+    border: none;
+    border-radius: var(--radius-lg);
+
+  }
+  .footer-social-media-wrapper {
+    display: flex;
+    gap: var(--space-md);
+  }
+  .icon-wrapper {
+    background-color: var(--color-neutral);
+  }
+  .footer-message {
+    width: 100%;
+    text-align: center;
+    padding: var(--space-sm);
+    border-top: var(--border-md) var(--color-base) solid;
+    font-weight: var(--font-weight-md);
+    color: var(--color-base);
+  }
+  @media (min-width: 1024px) {
+    .footer-content {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+</style>

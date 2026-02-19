@@ -1,0 +1,47 @@
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-base-light);
+  padding: 8px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 2.2;
+  color: var(--color-contrast);
+  flex-shrink: 0;
+}
+
+.icon-sm {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.icon-md {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.icon-lg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.icon-primary {
+  color: var(--color-primary);
+}
+.icon-contrast {
+  color: var(--color-contrast);
+}
+.icon-base {
+  color: var(--color-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .icon-wrapper:hover {
+    filter: brightness(0.95);
+  }
+}
