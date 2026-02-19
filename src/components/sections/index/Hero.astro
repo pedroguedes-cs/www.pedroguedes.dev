@@ -1,0 +1,95 @@
+---
+import pedroImage from "../../../assets/pedro.jpeg";
+import Container from "../../layout/Container.astro";
+import Button from "../../ui/Button.astro";
+import StrongSpan from "../../ui/StrongSpan.astro";
+---
+
+<section id="hero">
+  <Container>
+    <div class="hero-layout">
+      <img src={pedroImage.src} class="hero-image" alt="Pedro Guedes" />
+      <div class="hero-content">
+        <div class="hero-text-wrapper">
+          <StrongSpan title="Hi, i'm" variant="contrast" />
+          <h1 class="h1">Pedro Guedes</h1>
+          <StrongSpan title="Computer Science student" variant="contrast" />
+        </div>
+        <div class="buttons-wrapper">
+          <Button href="/projects" label="Projects" variant="primary" />
+          <Button href="/#contact" label="Contact" variant="primary" outline />
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  #hero {
+    width: 100%;
+    margin-inline: auto;
+    padding-block: var(--section-padding);
+  }
+  .hero-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+  .hero-image {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top;
+    border: none;
+    border-radius: var(--radius-lg);
+  }
+  .hero-content {
+    display: contents;
+  }
+  .hero-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .h1 {
+    text-align: center;
+    line-height: 1.1;
+    font-family: var(--font-family);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-xl);
+    color: var(--color-contrast);
+  }
+  .buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  @media (min-width: 1024px) {
+    .hero-layout {
+      flex-direction: row;
+    }
+    .hero-image {
+      flex: 1;
+    }
+    .hero-content {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+      .buttons-wrapper {
+    flex-direction: row;
+    justify-content: center;
+  }
+  }
+</style>

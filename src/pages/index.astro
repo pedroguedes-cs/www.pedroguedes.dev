@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Sidebar from "../components/sections/Sidebar.astro";
 import Header from "../components/sections/Header.astro";
+import Hero from "../components/sections/index/Hero.astro";
 import Footer from "../components/sections/Footer.astro";
 import Section from "../components/layout/Section.astro";
 import Button from "../components/ui/Button.astro";
@@ -11,14 +12,7 @@ import Button from "../components/ui/Button.astro";
   <Header />
   <Sidebar />
   <main>
-    <Section id="hero" title="hero" variant="base">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam
-        repellat, saepe sed nisi provident iusto. Dignissimos, commodi.
-        Perspiciatis dolores beatae voluptate assumenda vero quae. Ea tenetur
-        iure quasi libero?
-      </p>
-    </Section>
+    <Hero />
     <Section id="about" title="about" variant="contrast">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam
