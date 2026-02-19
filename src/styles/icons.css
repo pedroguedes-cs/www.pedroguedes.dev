@@ -42,6 +42,6 @@
 
 @media (hover: hover) and (pointer: fine) {
   .icon-wrapper:hover {
-    filter: brightness(0.95);
+    filter: var(--icon-wrapper-filter);
   }
 }

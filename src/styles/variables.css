@@ -21,8 +21,8 @@
   --color-primary:       hsl(220, 95%, 55%);
   --color-primary-dark:  hsl(220, 95%, 45%);
 
-  --color-contrast-light: hsl(0, 0%, 30%);
-  --color-contrast: hsl(0, 0%, 10%);
+  --color-contrast-light: hsl(0, 0%, 8%);
+  --color-contrast: hsl(0, 0%, 4%);
   --color-contrast-dark: hsl(0, 0%, 0%);
 
   --color-base-light: hsl(0, 0%, 100%);
@@ -30,6 +30,7 @@
   --color-base-dark: hsl(0, 0%, 92%);
 
   --color-neutral: hsl(0, 0%, 82%);
+  --overlay-color: hsla(220, 20%, 10%, 0.45);
 
   /* Spacing */
   --space-sm: clamp(0.5rem, 1vw, 0.75rem); /* 8px -> 12px */
@@ -75,6 +76,9 @@
   --font-weight-lg: 600;
   --font-weight-xl: 700;
 
+  /* Main */
+  --main-padding-top: calc(var(--header-height) + var(--space-sm));
+
   /* Section */
   --section-padding: var(--space-xl);
 
@@ -84,4 +88,26 @@
 
   /* Header */
   --header-height: 5rem;
+  
+  /* Sidebar transition */
+  --sidebar-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --sidebar-max-width: 400px;
+
+  /* Icon wrapper */
+  --icon-wrapper-filter: brightness(0.9);
+}
+
+body.dark-mode {
+  --color-base-light: hsl(0, 0%, 8%);
+  --color-base: hsl(0, 0%, 4%);
+  --color-base-dark: hsl(0, 0%, 0%);
+
+  --color-contrast-light: hsl(0, 0%, 100%);
+  --color-contrast: hsl(0, 0%, 96%);
+  --color-contrast-dark: hsl(0, 0%, 92%);
+
+  --color-neutral: hsl(0, 0%, 18%);
+  --overlay-color: hsla(0, 0%, 100%, 0.08);
+
+  --icon-wrapper-filter: brightness(1.2);
 }
