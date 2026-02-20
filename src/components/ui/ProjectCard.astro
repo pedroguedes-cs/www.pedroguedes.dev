@@ -1,0 +1,83 @@
+---
+import { type CollectionEntry } from "astro:content";
+import Button from "./Button.astro";
+import Span from "./Span.astro";
+
+type Props = {
+  project: CollectionEntry<"projects">;
+  featured?: boolean;
+};
+
+const { project, featured = false } = Astro.props;
+---
+
+<div class="project-card">
+  <img
+    src={project.data.image.src}
+    alt={project.data.title}
+    class="card-image"
+  />
+
+  <div class="card-body">
+    <div class="card-text-wrapper">
+      <Span text={project.data.title} variant="contrast" fontSize="md" bold />
+      <Span text={project.data.description} variant="contrast" fontSize="sm" />
+    </div>
+    <Button
+      href={`/projects/${project.id}`}
+      label="Details"
+      variant="contrast"
+    />
+  </div>
+</div>
+
+<style>
+  .project-card {
+    height: 100%;
+    width: 100%;
+    border-radius: var(--radius-lg);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+
+    background-color: var(--color-base-light);
+    padding: var(--space-md);
+  }
+  .card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top;
+    border-radius: var(--radius-lg);
+  }
+  .card-body {
+    display: contents;
+  }
+  .card-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  @media (min-width: 1024px) {
+    .project-card {
+      flex-direction: row;
+      justify-content: start;
+    }
+    .card-image {
+      width: 40%;
+    }
+    .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+  }
+</style>

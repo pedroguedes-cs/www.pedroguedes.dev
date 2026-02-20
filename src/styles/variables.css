@@ -31,6 +31,8 @@
 
   --color-neutral: hsl(0, 0%, 82%);
   --overlay-color: hsla(220, 20%, 10%, 0.45);
+  --swiper-pagination-color: var(--color-primary);
+  --swiper-pagination-bullet-inactive-color: var(--color-contrast);
 
   /* Spacing */
   --space-sm: clamp(0.5rem, 1vw, 0.75rem); /* 8px -> 12px */
@@ -110,4 +112,5 @@ body.dark-mode {
   --overlay-color: hsla(0, 0%, 100%, 0.08);
 
   --icon-wrapper-filter: brightness(1.2);
+  --swiper-pagination-bullet-inactive-color: var(--color-contrast);
 }

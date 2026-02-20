@@ -4,6 +4,8 @@ import Sidebar from "../components/sections/Sidebar.astro";
 import Header from "../components/sections/Header.astro";
 import Hero from "../components/sections/index/Hero.astro";
 import About from "../components/sections/index/About.astro";
+import FeaturedProjects from "../components/sections/index/FeaturedProjects.astro";
+
 import Footer from "../components/sections/Footer.astro";
 import Section from "../components/layout/Section.astro";
 import Button from "../components/ui/Button.astro";
@@ -15,14 +17,8 @@ import Button from "../components/ui/Button.astro";
   <main>
     <Hero />
     <About />
-    <Section id="about" title="about" variant="contrast">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam
-        repellat, saepe sed nisi provident iusto. Dignissimos, commodi.
-        Perspiciatis dolores beatae voluptate assumenda vero quae. Ea tenetur
-        iure quasi libero?
-      </p>
-    </Section>
+    <FeaturedProjects />
+    
     <Section id="projects-preview" title="projects-preview" variant="primary">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam

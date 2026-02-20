@@ -1,7 +1,9 @@
 ---
-import { ChevronRight, GraduationCap } from "@lucide/astro";
+import { ChevronRight, ChevronLeft, GraduationCap, Cat } from "@lucide/astro";
 
-import ufrnImage from "../../../assets/ufrn.png";
+import aboutImage1 from "../../../assets/about/about1.png";
+import aboutImage2 from "../../../assets/about/about2.png";
+import aboutImage3 from "../../../assets/about/about3.png";
 import Section from "../../layout/Section.astro";
 import Span from "../../ui/Span.astro";
 
@@ -37,7 +39,20 @@ const topics = [
         }
       </div>
     </div>
-    <img src={ufrnImage.src} class="about-image" alt="UFRN" />
+    <div class="swiper swiper-about">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src={aboutImage1.src} alt="UFRN" class="about-image" />
+        </div>
+        <div class="swiper-slide">
+          <img src={aboutImage2.src} alt="IMD UFRN" class="about-image" />
+        </div>
+        <div class="swiper-slide">
+          <img src={aboutImage3.src} alt="DIMAP UFRN" class="about-image" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
   </div>
 </Section>
 
@@ -83,24 +98,54 @@ const topics = [
     border: none;
     border-radius: var(--radius-lg);
   }
+  .swiper-about {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .about-image {
     width: 100%;
-    border-radius: var(--radius-lg);
+    height: 100%;
+    object-fit: cover;
   }
   @media (min-width: 1024px) {
     .about-layout {
       flex-direction: row;
+      align-items: start;
     }
     .about-content,
-    .about-image {
+    .swiper-about {
       flex: 1;
       width: auto;
       min-width: 0;
     }
-
-    .about-image {
-      object-fit: cover;
-      object-position: center;
-    }
   }
 </style>
+
+<script>
+  import Swiper from "swiper";
+  import { Pagination, Autoplay } from "swiper/modules";
+
+  const swiper = new Swiper(".swiper-about", {
+    modules: [Pagination, Autoplay],
+
+    slidesPerView: 1,
+    loop: true,
+
+    autoplay: {
+      delay: 3000, // 3 segundos
+      disableOnInteraction: false,
+    },
+
+    pagination: {
+      el: ".swiper-about .swiper-pagination",
+      type: "progressbar",
+    },
+  });
+</script>

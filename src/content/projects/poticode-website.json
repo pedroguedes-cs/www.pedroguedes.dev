@@ -1,0 +1,9 @@
+{
+  "category": "web",
+  "title": "PotiCode Website",
+  "description": "The website of the Junior Enterprise i founded.",
+  "tags": ["HTML", "CSS", "JavaScript", "Swiper Js"],
+  "website": "https://www.poticode.com.br/",
+  "featured": true,
+  "image": "../../assets/projects/poticode-website.png"
+}
