@@ -13,7 +13,9 @@ const featuredProjects = projects.filter((p) => p.data.featured);
 <Section id="projects-preview" title="FEATURED PROJECTS" variant="base">
   <div class="projects-preview-layout">
     <div class="projects-preview-swiper-container">
-      <div class="swiper-button-prev icon-wrapper"></div>
+      <div class="swiper-button-prev icon-wrapper">
+        <ChevronLeft class="icon icon-lg icon-primary" />
+      </div>
       <div class="swiper swiper-projects-preview">
         <div class="swiper-wrapper">
           {
@@ -26,7 +28,9 @@ const featuredProjects = projects.filter((p) => p.data.featured);
         </div>
         <div class="swiper-pagination"></div>
       </div>
-      <div class="swiper-button-next icon-wrapper"></div>
+      <div class="swiper-button-next icon-wrapper">
+        <ChevronRight class="icon icon-lg icon-primary" />
+      </div>
     </div>
 
     <Button href="/projects" label="All Projects" variant="primary" />
@@ -67,7 +71,6 @@ const featuredProjects = projects.filter((p) => p.data.featured);
   }
   .swiper-button-next,
   .swiper-button-prev {
-    position: initial;
     display: none;
   }
   .icon-wrapper {
@@ -78,10 +81,6 @@ const featuredProjects = projects.filter((p) => p.data.featured);
   }
   .swiper-pagination-bullet {
     background-color: var(--color-text);
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: red;
   }
   @media (min-width: 1024px) {
     .swiper-button-next,
