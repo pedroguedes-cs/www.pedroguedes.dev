@@ -1,0 +1,49 @@
+---
+import type { Variant } from "../variant";
+import type { FontSize } from "../fontSize";
+
+type Props = {
+  text: string;
+  variant?: Variant;
+  fontSize?: FontSize;
+  bold?: boolean;
+};
+
+const { text, variant = "contrast", fontSize = 'sm', bold = false } = Astro.props;
+---
+
+<span class={`span ${variant} ${fontSize} ${bold ? 'bold' : null}`}>
+  {text}
+</span>
+
+
+<style>
+  .span {
+    text-align: center;
+    line-height: 1.5;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-md);
+  }
+  .span.base {
+    color: var(--color-base);
+  }
+  .span.contrast {
+    color: var(--color-contrast);
+  }
+  .span.primary {
+    color: var(--color-primary);
+  }
+  .span.sm {
+    font-size: var(--font-size-sm);
+  }
+  .span.md {
+    font-size: var(--font-size-md);
+  }
+  .span.lg {
+    font-size: var(--font-size-lg);
+  }
+  .span.bold {
+    font-weight: var(--font-weight-lg);
+  }
+</style>

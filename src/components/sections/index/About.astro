@@ -1,0 +1,106 @@
+---
+import { ChevronRight, GraduationCap } from "@lucide/astro";
+
+import ufrnImage from "../../../assets/ufrn.png";
+import Section from "../../layout/Section.astro";
+import Span from "../../ui/Span.astro";
+
+const topics = [
+  "al;sfdjjsd;l",
+  "dsflkasd;lfkas;d",
+  "fkasdkf;sdkf",
+  "jdflkasjdfl;kjasd;lfj;asljdf;l",
+];
+---
+
+<Section id="about" title="ABOUT ME" variant="base">
+  <div class="about-layout">
+    <div class="about-content">
+      <div class="graduation-card">
+        <GraduationCap class="icon icon-lg icon-contrast" />
+        <Span
+          text="Bachelor’s in Computer Science"
+          variant="contrast"
+          fontSize="md"
+          bold
+        />
+        <Span text="UFRN (2025 - 2028)" variant="contrast" fontSize="md" />
+      </div>
+      <div class="about-topics-wrapper">
+        {
+          topics.map((topic) => (
+            <div class="about-topic">
+              <ChevronRight class="icon icon-sm icon-primary" />
+              <Span text={topic} variant="contrast" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <img src={ufrnImage.src} class="about-image" alt="UFRN" />
+  </div>
+</Section>
+
+<style>
+  .about-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .about-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .graduation-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+    border: var(--border-lg) var(--color-base-light) solid;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+  }
+  .about-topics-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .about-topic {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background-color: var(--color-base-light);
+    padding: var(--space-sm);
+    border: none;
+    border-radius: var(--radius-lg);
+  }
+  .about-image {
+    width: 100%;
+    border-radius: var(--radius-lg);
+  }
+  @media (min-width: 1024px) {
+    .about-layout {
+      flex-direction: row;
+    }
+    .about-content,
+    .about-image {
+      flex: 1;
+      width: auto;
+      min-width: 0;
+    }
+
+    .about-image {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+</style>

@@ -2,7 +2,7 @@
 import pedroImage from "../../../assets/pedro.jpeg";
 import Container from "../../layout/Container.astro";
 import Button from "../../ui/Button.astro";
-import StrongSpan from "../../ui/StrongSpan.astro";
+import Span from "../../ui/Span.astro";
 ---
 
 <section id="hero">
@@ -11,9 +11,9 @@ import StrongSpan from "../../ui/StrongSpan.astro";
       <img src={pedroImage.src} class="hero-image" alt="Pedro Guedes" />
       <div class="hero-content">
         <div class="hero-text-wrapper">
-          <StrongSpan title="Hi, i'm" variant="contrast" />
+          <Span text="Hi, i'm" variant="contrast" fontSize="md" bold />
           <h1 class="h1">Pedro Guedes</h1>
-          <StrongSpan title="Computer Science student" variant="contrast" />
+          <Span text="Computer Science student" variant="contrast" fontSize="md" bold />
         </div>
         <div class="buttons-wrapper">
           <Button href="/projects" label="Projects" variant="primary" />
