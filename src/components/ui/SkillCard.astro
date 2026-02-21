@@ -1,0 +1,36 @@
+---
+import { type CollectionEntry } from "astro:content";
+import Span from "./Span.astro";
+
+type Props = {
+  skill: CollectionEntry<"skills">;
+};
+
+const { skill } = Astro.props;
+---
+
+<div class="skill-card">
+  <Span text={skill.data.title} variant="contrast" fontSize="md" bold />
+  <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d={skill.data.svgPath}></path>
+  </svg>
+</div>
+
+<style>
+  .skill-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    border: none;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-base-light);
+  }
+  .skill-icon {
+    width: var(--font-size-xl);
+    fill: var(--color-primary);
+  }
+</style>

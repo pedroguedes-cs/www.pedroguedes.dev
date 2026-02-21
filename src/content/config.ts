@@ -19,6 +19,7 @@ const skills = defineCollection({
   type: "data",
   schema: z.object({
     title: z.string(),
+    svgPath: z.string(),
     category: z.enum(["frontend", "backend", "tools", "other"]),
   }),
 });

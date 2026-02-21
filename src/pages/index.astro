@@ -5,10 +5,9 @@ import Header from "../components/sections/Header.astro";
 import Hero from "../components/sections/index/Hero.astro";
 import About from "../components/sections/index/About.astro";
 import FeaturedProjects from "../components/sections/index/FeaturedProjects.astro";
-
+import Skills from "../components/sections/index/Skills.astro";
 import Footer from "../components/sections/Footer.astro";
-import Section from "../components/layout/Section.astro";
-import Button from "../components/ui/Button.astro";
+
 ---
 
 <BaseLayout title="Pedro Guedes">
@@ -18,31 +17,7 @@ import Button from "../components/ui/Button.astro";
     <Hero />
     <About />
     <FeaturedProjects />
-    
-    <Section id="projects-preview" title="projects-preview" variant="primary">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam
-        repellat, saepe sed nisi provident iusto. Dignissimos, commodi.
-        Perspiciatis dolores beatae voluptate assumenda vero quae. Ea tenetur
-        iure quasi libero?
-      </p>
-    </Section>
-    <Section id="contact" title="contact" variant="contrast">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam
-        repellat, saepe sed nisi provident iusto. Dignissimos, commodi.
-        Perspiciatis dolores beatae voluptate assumenda vero quae. Ea tenetur
-        iure quasi libero?
-      </p>
-    </Section>
-    <Section id="skills" title="skills" variant="base">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam
-        repellat, saepe sed nisi provident iusto. Dignissimos, commodi.
-        Perspiciatis dolores beatae voluptate assumenda vero quae. Ea tenetur
-        iure quasi libero?
-      </p>
-    </Section>
+    <Skills />
   </main>
   <Footer />
 </BaseLayout>
