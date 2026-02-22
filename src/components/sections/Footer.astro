@@ -4,6 +4,11 @@ import pedroImage from '../../assets/pedro.jpeg'
 
 import Container from "../layout/Container.astro";
 import Button from "../ui/Button.astro";
+
+const isHomePage = Astro.url.pathname === "/"
+const emailLink = "mailto:pedroguedescs@gmail.com"
+const githubLink = "https://github.com/pedroguedes-cs/"
+const linkedinLink = "https://www.linkedin.com/in/pedroguedes-cs/"
 ---
 
 <footer class="footer">
@@ -12,17 +17,17 @@ import Button from "../ui/Button.astro";
       <div class="footer-content">
         <img class="footer-image" src={pedroImage.src} alt="Pedro Guedes">
         <div class="footer-social-media-wrapper">
-          <a href="https://github.com/pedroguedes-cs" class="icon-wrapper" target="_blank">
+          <a href={githubLink} class="icon-wrapper" target="_blank">
               <Github class="icon icon-md icon-contrast" />
           </a>
-          <a href="https://www.linkedin.com/in/pedroguedes-cs/" class="icon-wrapper" target="_blank">
+          <a href={linkedinLink} class="icon-wrapper" target="_blank">
               <Linkedin class="icon icon-md icon-contrast" />
           </a>
-          <a href="mailto:pedroguedescs@gmail.com" class="icon-wrapper" target="_blank">
+          <a href={emailLink} class="icon-wrapper" target="_blank">
               <Mail class="icon icon-md icon-contrast" />
           </a>
         </div>
-        <Button href="/#contact" label="Contact" variant="contrast" />
+        {isHomePage ? null : <Button href="/#contact" label="Contact" variant="contrast" />}
       </div>
       <div class="footer-message">
         Designed and developed by me

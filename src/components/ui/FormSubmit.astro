@@ -1,0 +1,105 @@
+---
+const email = "pedroguedescs@gmail.com";
+const url = "https://www.pedroguedes.dev/message";
+const messageUser = "User message - test";
+const messageWebsite = "Website message - test";
+---
+
+<form
+  class="contact-form"
+  action={`https://formsubmit.co/${email}`}
+  method="POST"
+>
+  <!-- User -->
+  <input type="hidden" name="_next" value={url} />
+  <input type="hidden" name="_autoresponse" value={messageUser} />
+
+  <!-- Website -->
+  <input type="hidden" name="_subject" value={messageWebsite} />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_replyto" value="email" />
+
+  <input
+    type="text"
+    id="name"
+    name="name"
+    class="form-input"
+    placeholder="Name"
+    required
+  />
+
+  <input
+    type="email"
+    id="email"
+    name="email"
+    class="form-input"
+    placeholder="email@example.com"
+    required
+  />
+
+  <textarea
+    id="message"
+    name="message"
+    class="form-textarea"
+    placeholder="Message"
+    required></textarea>
+
+  <button type="submit" class="form-button">Send message</button>
+</form>
+
+<style>
+  .contact-form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+
+    background: var(--color-base);
+    padding: var(--space-md);
+    border: solid var(--border-lg) var(--color-base-light);
+    border-radius: var(--radius-md);
+
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-md);
+    color: var(--color-contrast);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-md);
+    color: var(--color-neutral);
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .form-button {
+    background-color: var(--color-primary);
+    padding: var(--space-sm) var(--space-md);
+    border: solid var(--border-md) var(--color-primary);
+    border-radius: var(--radius-md);
+
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-lg);
+    color: var(--color-base);
+    cursor: pointer;
+  }
+</style>

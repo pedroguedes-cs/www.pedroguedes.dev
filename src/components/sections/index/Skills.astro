@@ -5,11 +5,9 @@ import Section from "../../layout/Section.astro";
 import SkillCard from "../../ui/SkillCard.astro";
 
 const skills: CollectionEntry<"skills">[] = await getCollection("skills");
-console.log(skills)
 ---
 
 <Section id="skills" title="SKILLS" variant="base">
-
   <div class="skills-layout">
     {skills.map((skill) => <SkillCard skill={skill} />)}
   </div>
@@ -17,6 +15,7 @@ console.log(skills)
 
 <style>
   .skills-layout {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-md);
