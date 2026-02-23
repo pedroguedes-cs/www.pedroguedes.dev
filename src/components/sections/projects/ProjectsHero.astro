@@ -1,0 +1,73 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { PROJECT_CATEGORIES } from "../../../content/constants";
+import Container from "../../layout/Container.astro";
+import CategoryCard from "../../ui/CategoryCard.astro";
+
+// Featured projects
+const allProjects: CollectionEntry<"projects">[] =
+  await getCollection("projects");
+const featuredProjects = allProjects.filter((p) => p.data.featured);
+const hasFeaturedProjects = featuredProjects.length > 0;
+
+// Sorted + "other" at the end
+const allCategories = [...PROJECT_CATEGORIES].sort((a, b) => {
+  if (a === "other") return 1;
+  if (b === "other") return -1;
+  return a.localeCompare(b);
+});
+
+const activeCategories = allCategories.filter((c) => allProjects.some((p) => p.data.category === c))
+---
+
+<section id="projects-hero">
+  <Container>
+    <div class="projects-hero-layout">
+      <h1 class="h1">PROJECTS</h1>
+      <div class="category-card-grid">
+        {hasFeaturedProjects ? <CategoryCard category="featured" /> : null}
+        {activeCategories.map((c) => <CategoryCard category={c} />)}
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  #projects-hero {
+    width: 100%;
+    margin-inline: auto;
+    padding-block: var(--section-padding);
+  }
+  .projects-hero-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+  .h1 {
+    text-align: center;
+    line-height: 1.2;
+    font-family: var(--font-family);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-xl);
+    color: var(--color-contrast);
+  }
+  .category-card-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  @media (min-width: 768px) {
+    .category-card-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 1024px) {
+    .category-card-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>

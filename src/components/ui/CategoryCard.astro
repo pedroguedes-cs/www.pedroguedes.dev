@@ -1,0 +1,37 @@
+---
+import { Award, Terminal, Globe, Cog } from '@lucide/astro'
+import Span from './Span.astro'
+
+type Props = {
+    category: string
+}
+
+const {category} = Astro.props
+
+const featured = category === 'featured'
+const cli = category === 'cli'
+const web = category === 'web';
+const other = category === 'other'
+---
+
+<a href={`#${category}`} class="category-card">
+    {featured ? <Award class='icon icon-md icon-contrast' /> : null}
+    {cli ? <Terminal class='icon icon-md icon-contrast' /> : null}
+    {web ? <Globe class='icon icon-md icon-contrast' /> : null}
+    {other ? <Cog class='icon icon-md icon-contrast' /> : null}
+    <Span text={category.toUpperCase()} variant='contrast' fontSize='md' bold />
+</a>
+
+<style>
+    .category-card {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+
+        background-color: var(--color-base-light);
+        padding: var(--space-sm) var(--space-md);
+        border: none;
+        border-radius: var(--radius-lg);
+    }
+</style>

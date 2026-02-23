@@ -1,17 +1,28 @@
 import { defineCollection, z } from "astro:content";
+import { PROJECT_CATEGORIES, SKILL_CATEGORIES, PROJECT_TAGS } from "./constants";
+
 
 const projects = defineCollection({
-  type: "data",
+  type: "content",
   schema: ({image}) => z.object({
-      category: z.enum(["web", "cli", "other"]),
+      category: z.enum(PROJECT_CATEGORIES),
       title: z.string(),
       description: z.string(),
-      tags: z.array(z.string()).default([]),
+      tags: z.array(z.enum(PROJECT_TAGS)),
       repo: z.string().url().optional(),
       website: z.string().url().optional(),
       demo: z.string().url().optional(),
-      featured: z.boolean().default(false),
-      image: image()
+      featured: z.boolean(),
+      images: z.array(
+        z.object({
+          src: image(),
+          alt: z.string(),
+        })
+      ).default([]).optional(),
+      cover: z.object({
+        src: image(),
+        alt: z.string(),
+      })
     }),
 });
 
@@ -20,7 +31,7 @@ const skills = defineCollection({
   schema: z.object({
     title: z.string(),
     svgPath: z.string(),
-    category: z.enum(["frontend", "backend", "tools", "other"]),
+    category: z.enum(SKILL_CATEGORIES),
   }),
 });
 

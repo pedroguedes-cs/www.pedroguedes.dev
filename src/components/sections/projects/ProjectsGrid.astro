@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { PROJECT_CATEGORIES } from "../../../content/constants";
+import CategoryGrid from "../../ui/CategoryGrid.astro";
+
+// Featured projects
+const allProjects: CollectionEntry<"projects">[] =
+  await getCollection("projects");
+const featuredProjects = allProjects.filter((p) => p.data.featured);
+const hasFeaturedProjects = featuredProjects.length > 0;
+
+// Sorted + "other" at the end
+const allCategories = [...PROJECT_CATEGORIES].sort((a, b) => {
+  if (a === "other") return 1;
+  if (b === "other") return -1;
+  return a.localeCompare(b);
+});
+
+const activeCategories = allCategories.filter((c) => allProjects.some((p) => p.data.category === c))
+---
+
+{hasFeaturedProjects ? <CategoryGrid category='featured' /> : null}
+{activeCategories.map(c => <CategoryGrid category={c} />)}

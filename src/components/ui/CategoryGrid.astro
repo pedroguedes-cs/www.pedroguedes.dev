@@ -1,0 +1,73 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { Award, Terminal, Globe, Cog } from "@lucide/astro";
+import Container from "../layout/Container.astro";
+import Heading from "./Heading.astro";
+import ProjectCard from "./ProjectCard.astro";
+
+type Props = {
+  category: string;
+};
+
+const { category } = Astro.props;
+
+const featured = category === "featured";
+const cli = category === "cli";
+const web = category === "web";
+const other = category === "other";
+
+const allProjects: CollectionEntry<"projects">[] = await getCollection("projects");
+let projects;
+
+if (featured) {
+  projects = allProjects.filter(p => p.data.featured)
+}
+else {
+  projects = allProjects.filter(p => p.data.category === category)
+}
+---
+
+<section id={category} class="category-grid">
+  <Container>
+    <div class="category-grid-layout">
+      <div class="category-grid-heading-wrapper">
+        {featured ? <Award class="icon icon-lg icon-contrast" /> : null}
+        {cli ? <Terminal class="icon icon-lg icon-contrast" /> : null}
+        {web ? <Globe class="icon icon-lg icon-contrast" /> : null}
+        {other ? <Cog class="icon icon-lg icon-contrast" /> : null}
+        <Heading title={category.toUpperCase()} variant="contrast" />
+      </div>
+      <div class="projects-wrapper">
+        {featured ? projects.map(p => <ProjectCard project={p} featured />) : projects.map(p => <ProjectCard project={p} />)}
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .category-grid {
+    width: 100%;
+    margin-inline: auto;
+    padding-block: var(--section-padding);
+    background-color: var(--color-base);
+  }
+  .category-grid-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .category-grid-heading-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .projects-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+</style>

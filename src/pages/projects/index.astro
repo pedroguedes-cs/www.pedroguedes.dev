@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Sidebar from "../../components/sections/Sidebar.astro";
+import Header from "../../components/sections/Header.astro";
+import ProjectsHero from "../../components/sections/projects/ProjectsHero.astro";
+import ProjectsGrid from "../../components/sections/projects/ProjectsGrid.astro";
+import Footer from "../../components/sections/Footer.astro";
+---
+
+<BaseLayout title="Projects">
+  <Header />
+  <Sidebar />
+  <main>
+    <ProjectsHero />
+    <ProjectsGrid />
+  </main>
+  <Footer />
+</BaseLayout>
