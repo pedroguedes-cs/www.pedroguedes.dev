@@ -1,24 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Sidebar from "../components/sections/Sidebar.astro";
-import Header from "../components/sections/Header.astro";
 import Hero from "../components/sections/index/Hero.astro";
 import About from "../components/sections/index/About.astro";
 import FeaturedProjects from "../components/sections/index/FeaturedProjects.astro";
 import Skills from "../components/sections/index/Skills.astro";
 import Contact from "../components/sections/index/Contact.astro";
-import Footer from "../components/sections/Footer.astro";
 ---
 
 <BaseLayout title="Pedro Guedes">
-  <Header />
-  <Sidebar />
-  <main>
-    <Hero />
-    <About />
-    <FeaturedProjects />
-    <Skills />
-    <Contact />
-  </main>
-  <Footer />
+  <Hero />
+  <About />
+  <FeaturedProjects />
+  <Skills />
+  <Contact />
 </BaseLayout>

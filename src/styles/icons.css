@@ -39,6 +39,12 @@
 .icon-base {
   color: var(--color-base);
 }
+.icon-featured-contrast {
+  color: var(--color-featured-contrast);
+}
+.icon-featured-base {
+  color: var(--color-featured-base);
+}
 
 @media (hover: hover) and (pointer: fine) {
   .icon-wrapper:hover {

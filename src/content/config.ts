@@ -11,18 +11,14 @@ const projects = defineCollection({
       tags: z.array(z.enum(PROJECT_TAGS)),
       repo: z.string().url().optional(),
       website: z.string().url().optional(),
-      demo: z.string().url().optional(),
+      demo: z.string().optional(),
       featured: z.boolean(),
       images: z.array(
         z.object({
           src: image(),
           alt: z.string(),
         })
-      ).default([]).optional(),
-      cover: z.object({
-        src: image(),
-        alt: z.string(),
-      })
+      )
     }),
 });
 

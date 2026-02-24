@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
-import { Award, Terminal, Globe, Cog } from "@lucide/astro";
+import { BadgeCheck, Terminal, Globe, Cog } from "@lucide/astro";
 import Container from "../layout/Container.astro";
 import Heading from "./Heading.astro";
 import ProjectCard from "./ProjectCard.astro";
@@ -16,29 +16,30 @@ const cli = category === "cli";
 const web = category === "web";
 const other = category === "other";
 
-const allProjects: CollectionEntry<"projects">[] = await getCollection("projects");
-let projects;
+const allProjects: CollectionEntry<"projects">[] =
+  await getCollection("projects");
 
-if (featured) {
-  projects = allProjects.filter(p => p.data.featured)
-}
-else {
-  projects = allProjects.filter(p => p.data.category === category)
-}
+const projects = allProjects
+  .filter((p) => (featured ? p.data.featured : p.data.category === category))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <section id={category} class="category-grid">
   <Container>
     <div class="category-grid-layout">
       <div class="category-grid-heading-wrapper">
-        {featured ? <Award class="icon icon-lg icon-contrast" /> : null}
+        {featured ? <BadgeCheck class="icon icon-lg icon-contrast" /> : null}
         {cli ? <Terminal class="icon icon-lg icon-contrast" /> : null}
         {web ? <Globe class="icon icon-lg icon-contrast" /> : null}
         {other ? <Cog class="icon icon-lg icon-contrast" /> : null}
         <Heading title={category.toUpperCase()} variant="contrast" />
       </div>
       <div class="projects-wrapper">
-        {featured ? projects.map(p => <ProjectCard project={p} featured />) : projects.map(p => <ProjectCard project={p} />)}
+        {
+          featured
+            ? projects.map((p) => <ProjectCard project={p} featured />)
+            : projects.map((p) => <ProjectCard project={p} />)
+        }
       </div>
     </div>
   </Container>

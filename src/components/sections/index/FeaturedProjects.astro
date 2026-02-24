@@ -21,7 +21,7 @@ const featuredProjects = projects.filter((p) => p.data.featured);
           {
             featuredProjects.map((project) => (
               <div class="swiper-slide">
-                <ProjectCard project={project} />
+                <ProjectCard project={project} projectsPreview />
               </div>
             ))
           }

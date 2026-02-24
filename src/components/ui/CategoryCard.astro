@@ -1,5 +1,5 @@
 ---
-import { Award, Terminal, Globe, Cog } from '@lucide/astro'
+import { BadgeCheck, Terminal, Globe, Cog } from '@lucide/astro'
 import Span from './Span.astro'
 
 type Props = {
@@ -15,11 +15,11 @@ const other = category === 'other'
 ---
 
 <a href={`#${category}`} class="category-card">
-    {featured ? <Award class='icon icon-md icon-contrast' /> : null}
+    {featured ? <BadgeCheck class='icon icon-md icon-contrast' /> : null}
     {cli ? <Terminal class='icon icon-md icon-contrast' /> : null}
     {web ? <Globe class='icon icon-md icon-contrast' /> : null}
     {other ? <Cog class='icon icon-md icon-contrast' /> : null}
-    <Span text={category.toUpperCase()} variant='contrast' fontSize='md' bold />
+    <Span text={category.toLowerCase()} variant='contrast' fontSize='md' bold />
 </a>
 
 <style>

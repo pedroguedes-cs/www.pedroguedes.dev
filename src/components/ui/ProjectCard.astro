@@ -7,29 +7,30 @@ import Span from "./Span.astro";
 
 type Props = {
   project: CollectionEntry<"projects">;
+  projectsPreview?: boolean;
   featured?: boolean;
 };
 
-const { project, featured = false } = Astro.props;
+const { project, projectsPreview = false, featured = false } = Astro.props;
 ---
 
 <div class={`project-card ${featured ? 'featured' : null}`}>
   <div class="card-image-wrapper">
     <Image
-      src={project.data.cover.src}
-      alt={project.data.cover.alt}
+      src={project.data.images[0].src}
+      alt={project.data.images[0].alt}
       class="card-image"
     />
   </div>
   <div class="card-body">
     <div class="card-text-wrapper">
-      <Span text={project.data.title} variant="contrast" fontSize="md" bold />
-      <Span text={project.data.description.toLowerCase()} variant="contrast" fontSize="sm" />
+      <Span text={project.data.title.toUpperCase()} variant={featured ? "featured" : "contrast"} fontSize="md" bold />
+      <Span text={project.data.description.toLowerCase()} variant={featured ? "featured" : "contrast"} fontSize="sm" />
     </div>
     <Button
-      href={`/projects/${project.id.split("/")[0]}/`}
+      href={`/projects/${project.slug}`}
       label="Details"
-      variant="contrast"
+      variant={projectsPreview ? "contrast" : featured ? "featured" : "primary"}
     />
   </div>
 </div>
@@ -50,8 +51,7 @@ const { project, featured = false } = Astro.props;
     padding: var(--space-md);
   }
   .project-card.featured {
-    background-color: var(--color-featured);
-    border: var(--border-lg) var(--color-featured) solid;
+    background-color: var(--color-featured-base);
   }
   .card-image-wrapper {
     width: 100%;

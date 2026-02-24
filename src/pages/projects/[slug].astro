@@ -1,0 +1,299 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/layout/Container.astro";
+import Button from "../../components/ui/Button.astro";
+import Span from "../../components/ui/Span.astro";
+
+import { BadgeCheck } from "@lucide/astro";
+
+import { getCollection, type CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project) => ({
+    params: {
+      slug: project.slug,
+    },
+    props: {
+      project,
+    },
+  }));
+}
+
+type Props = {
+  project: CollectionEntry<"projects">;
+};
+
+const { project } = Astro.props;
+
+const demo = project.data.demo;
+const repo = project.data.repo;
+const website = project.data.website;
+const featured = project.data.featured;
+
+const enoughSlides = project.data.images.length > 1;
+---
+
+<BaseLayout title={project.data.title}>
+  <Container>
+    <div class="project-page-layout">
+      <Button href="/projects" label="All Projects" variant="contrast" />
+      <div class="project-details">
+        {
+          featured ? (
+            <div class="featured-pill">
+              <BadgeCheck class="icon icon-sm icon-featured-contrast" />
+              <Span text="featured" variant="featured" fontSize="sm" bold />
+            </div>
+          ) : null
+        }
+
+        <div class="project-main-info">
+          <div class="project-intro">
+            <h1 class="h1">{project.data.title.toUpperCase()}</h1>
+            <Span text={project.data.category} bold />
+            <p class="project-description">{project.data.description}</p>
+          </div>
+
+          {
+            enoughSlides ? (
+              <div class="swiper swiper-project-details">
+                <div class="swiper-wrapper">
+                  {project.data.images.map((image) => {
+                    return (
+                      <div class="swiper-slide">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          class="project-image"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+                <div class="swiper-pagination" />
+              </div>
+            ) : (
+              <div class="project-image-wrapper">
+                <Image
+                  src={project.data.images[0].src}
+                  alt={project.data.images[0].alt}
+                  class="project-image"
+                />
+              </div>
+            )
+          }
+        </div>
+
+        <div class="project-stack-wrapper">
+          <Span text="STACK" bold />
+          <ul>
+            {project.data.tags.map((t) => <li>{t}</li>)}
+          </ul>
+        </div>
+
+        {
+          demo ? (
+            <div class="project-demo-wrapper">
+              <Span text="WATCH THE DEMO" bold />
+              <div class="demo-video-wrapper">
+                <iframe
+                  src={`https://www.youtube.com/embed/${demo}`}
+                  title="Project demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                />
+              </div>
+            </div>
+          ) : null
+        }
+
+        {
+          repo ? (
+            <div class="project-repo-wrapper">
+              <Span text="REPOSITORY" bold />
+              <Button href={repo} label="Repository" blank />
+            </div>
+          ) : null
+        }
+
+        {
+          website ? (
+            <div class="project-website-wrapper">
+              <Span text="VISIT THE WEBSITE" bold />
+              <Button href={website} label="Website" blank />
+            </div>
+          ) : null
+        }
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
+
+<style>
+  .project-page-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    padding-block: var(--section-padding);
+  }
+  .project-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+
+    background-color: var(--color-base-light);
+    padding: var(--space-md);
+    border: none;
+    border-radius: var(--radius-lg);
+  }
+  .featured-pill {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-featured-base);
+  }
+  .project-main-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+  .project-intro {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  .h1 {
+    text-align: center;
+    line-height: 1.2;
+    font-family: var(--font-family);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-xl);
+    color: var(--color-contrast);
+  }
+  .project-description {
+    text-align: center;
+    line-height: 1.5;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-md);
+    color: var(--color-contrast);
+  }
+  .swiper-project-details,
+  .project-image-wrapper {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .swiper-project-details .swiper-slide {
+    width: 100%;
+    height: 100%; 
+  }
+  .project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .project-stack-wrapper,
+  .project-demo-wrapper,
+  .project-repo-wrapper,
+  .project-website-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding-top: var(--space-lg);
+    border-top: var(--border-lg) var(--color-base) solid;
+  }
+  .project-stack-wrapper ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .project-stack-wrapper li {
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-base);
+    padding: var(--space-sm);
+    border-radius: var(--radius-lg);
+
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-md);
+    color: var(--color-contrast);
+  }
+  .demo-video-wrapper {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    border: var(--border-lg) var(--color-base) solid;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .demo-video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  @media (min-width: 1024px) {
+    .project-main-info {
+      flex-direction: row;
+    }
+    .project-intro {
+      flex: 1;
+    }
+    .swiper-project-details,
+    .project-image-wrapper {
+      width: 40%;
+    }
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Pagination, Autoplay } from "swiper/modules";
+
+  const swiperProjectDetails = document.querySelector(
+    ".swiper-project-details",
+  );
+
+  if (swiperProjectDetails) {
+    const swiper = new Swiper(".swiper-project-details", {
+      modules: [Pagination, Autoplay],
+
+      slidesPerView: 1,
+      loop: true,
+
+      autoplay: {
+        delay: 3000, 
+        disableOnInteraction: false,
+      },
+
+      pagination: {
+        el: ".swiper-project-details .swiper-pagination",
+        type: "progressbar",
+      },
+    });
+  }
+</script>

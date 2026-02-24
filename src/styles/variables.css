@@ -17,9 +17,7 @@
   */
 
   /* Colors */
-  --color-primary-light: hsl(220, 95%, 65%);
-  --color-primary:       hsl(220, 95%, 55%);
-  --color-primary-dark:  hsl(220, 95%, 45%);
+  --color-primary: hsl(220, 95%, 55%);
 
   --color-contrast-light: hsl(0, 0%, 8%);
   --color-contrast: hsl(0, 0%, 4%);
@@ -29,7 +27,9 @@
   --color-base: hsl(0, 0%, 96%);
   --color-base-dark: hsl(0, 0%, 92%);
 
-  --color-featured: hsl(44, 65%, 70%);
+  --color-featured-base: hsl(42, 60%, 14%);
+  --color-featured-contrast: hsl(45, 90%, 78%);
+
   --color-neutral: hsl(0, 0%, 82%);
   --overlay-color: hsla(220, 20%, 10%, 0.45);
   --swiper-pagination-color: var(--color-primary);
@@ -91,7 +91,7 @@
 
   /* Header */
   --header-height: 5rem;
-  
+
   /* Sidebar transition */
   --sidebar-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   --sidebar-max-width: 400px;
@@ -109,7 +109,6 @@ body.dark-mode {
   --color-contrast: hsl(0, 0%, 96%);
   --color-contrast-dark: hsl(0, 0%, 92%);
 
-  --color-featured: hsl(45, 70%, 15%);
   --color-neutral: hsl(0, 0%, 18%);
   --overlay-color: hsla(0, 0%, 100%, 0.08);
 

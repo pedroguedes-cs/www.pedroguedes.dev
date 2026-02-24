@@ -6,13 +6,14 @@ type Props = {
   label: string;
   outline?: boolean;
   variant?: Variant;
+  blank?: boolean
 };
 
-const { href = "#", label, outline = false, variant = "primary" } = Astro.props;
+const { href = "#", label, outline = false, variant = "primary", blank = false } = Astro.props;
 ---
 
-<a href={href} class={outline ? `button button-outline button-outline-${variant}` : `button button-${variant}`}>
-  {label}
+<a href={href} class={`button ${variant} ${outline ? 'outline' : null}`} target={blank ? '_blank' : '_self'}>
+  {label.toLowerCase()}
 </a>
 
 
@@ -30,34 +31,39 @@ const { href = "#", label, outline = false, variant = "primary" } = Astro.props;
 
     cursor: pointer;
   }
-  .button-primary {
+  .button.primary {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-base);
   }
-  .button-base {
+  .button.base {
     background-color: var(--color-base);
     border-color: var(--color-base);
     color: var(--color-contrast);
   }
-  .button-contrast {
+  .button.contrast {
     background-color: var(--color-contrast);
     border-color: var(--color-contrast);
     color: var(--color-base);
   }
-  .button-outline {
+  .button.featured {
+    background-color: var(--color-featured-contrast);
+    border-color: var(--color-featured-contrast);
+    color: var(--color-featured-base);
+  }
+  .button.outline {
     background-color: transparent;
   }
-  .button-outline-base {
-    border-color: var(--color-base);
+  .button.outline.base {
     color: var(--color-base);
   }
-  .button-outline-primary {
-    border-color: var(--color-primary);
-    color: var(--color-primary); 
+  .button.outline.contrast {
+    color: var(--color-contrast);
   }
-  .button-outline-contrast {
-    border-color: var(--color-contrast);
-    color: var(--color-contrast); 
+  .button.outline.primary {
+    color: var(--color-primary);
+  }
+  .button.outline.featured {
+    color: var(--color-featured-base);
   }
 </style>

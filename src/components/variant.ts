@@ -1,1 +1,1 @@
-export type Variant = "primary" | "base" | "contrast";
+export type Variant = "primary" | "base" | "contrast" | "featured";
