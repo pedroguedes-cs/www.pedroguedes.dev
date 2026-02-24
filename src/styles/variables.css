@@ -100,7 +100,7 @@
   --icon-wrapper-filter: brightness(0.9);
 }
 
-body.dark-mode {
+html.dark-mode {
   --color-base-light: hsl(0, 0%, 8%);
   --color-base: hsl(0, 0%, 4%);
   --color-base-dark: hsl(0, 0%, 0%);

@@ -159,9 +159,14 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
   menuButton?.addEventListener("click", toggleSidebar);
   overlay?.addEventListener("click", toggleSidebar);
 
-  function toggleLightMode() {
-    document.body.classList.toggle("dark-mode");
+  function saveLightMode() {
+    localStorage.setItem('light-mode', JSON.stringify(!document.documentElement.classList.contains('dark-mode')))
   }
+  function toggleLightMode() {
+    document.documentElement.classList.toggle("dark-mode");
+    saveLightMode()
+  }
+
   const lightModeButton = document.querySelector(".light-mode-button");
   lightModeButton?.addEventListener("click", toggleLightMode);
 </script>
