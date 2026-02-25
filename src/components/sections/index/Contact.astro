@@ -2,7 +2,7 @@
 import { Github, Linkedin, Mail } from "@lucide/astro"
 import Section from "../../layout/Section.astro"
 import FormSubmit from "../../ui/FormSubmit.astro"
-import Span from "../../ui/Span.astro"
+import Paragraph from "../../ui/Paragraph.astro"
 
 const emailUser = "pedroguedescs@gmail.com"
 const emailLink = "mailto:pedroguedescs@gmail.com"
@@ -19,15 +19,15 @@ const linkedinLink = "https://www.linkedin.com/in/pedroguedes-cs/"
     <div class="social-media-wrapper">
         <a href={githubLink} class="social-media-link" target="_blank">
             <Github class="icon icon-md icon-contrast" />
-            <Span text={githubUser} fontSize="md" variant="contrast" bold />
+            <Paragraph text={githubUser} fontSize="md" variant="contrast" bold />
         </a>
         <a href={linkedinLink} class="social-media-link" target="_blank">
             <Linkedin class="icon icon-md icon-contrast" />
-            <Span text={linkedinUser} fontSize="md" variant="contrast" bold />
+            <Paragraph text={linkedinUser} fontSize="md" variant="contrast" bold />
         </a>
         <a href={emailLink} class="social-media-link" target="_blank">
             <Mail class="icon icon-md icon-contrast" />
-            <Span text={emailUser} fontSize="md" variant="contrast" bold />
+            <Paragraph text={emailUser} fontSize="md" variant="contrast" bold />
         </a>
     </div>
     <FormSubmit />

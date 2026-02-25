@@ -1,14 +1,14 @@
 ---
 category: "web"
 title: "PotiCode Website"
-description: "test test test test"
-tags: ["html", "css", "javascript"]
+summary: "Computer Science Junior Enterprise I co-founded"
+description: "The official website of PotiCode, a Computer Science Junior Enterprise I co-founded. It was built to share our story, present our services, showcase the companies we’ve worked with, and make it easy for new clients to get in touch."
+tags: ["HTML", "CSS", "JavaScript"]
 website: "https://www.poticode.com.br/"
-demo: "ZRfbxiADyK0"
 featured: true
 images:
   - src: ./cover.png
-    alt: "PotiCode website"
-  - src: ./image2.png
-    alt: "PotiCode website"
+    alt: "PotiCode Website"
+  - src: ./hero.png
+    alt: "PotiCode Website"
 ---

@@ -5,13 +5,14 @@ import aboutImage1 from "../../../assets/about/about1.png";
 import aboutImage2 from "../../../assets/about/about2.png";
 import aboutImage3 from "../../../assets/about/about3.png";
 import Section from "../../layout/Section.astro";
-import Span from "../../ui/Span.astro";
+import Paragraph from "../../ui/Paragraph.astro";
 
 const topics = [
-  "al;sfdjjsd;l",
-  "dsflkasd;lfkas;d",
-  "fkasdkf;sdkf",
-  "jdflkasjdfl;kjasd;lfj;asljdf;l",
+  "Based in Natal, RN, Brazil 🇧🇷",
+  "20 years old",
+  "Computer Science student at UFRN",
+  "Co-Founder of PotiCode (Computer Science Junior Enterprise at UFRN)",
+  "Currently focused on Web Development"
 ];
 ---
 
@@ -20,20 +21,20 @@ const topics = [
     <div class="about-content">
       <div class="graduation-card">
         <GraduationCap class="icon icon-lg icon-contrast" />
-        <Span
+        <Paragraph
           text="Bachelor’s in Computer Science"
           variant="contrast"
           fontSize="md"
           bold
         />
-        <Span text="UFRN (2025 - 2028)" variant="contrast" fontSize="md" />
+        <Paragraph text="UFRN (2025 - 2028)" variant="contrast" fontSize="md" />
       </div>
       <div class="about-topics-wrapper">
         {
           topics.map((topic) => (
             <div class="about-topic">
               <ChevronRight class="icon icon-sm icon-primary" />
-              <Span text={topic} variant="contrast" />
+              <Paragraph text={topic} variant="contrast" alignLeft />
             </div>
           ))
         }

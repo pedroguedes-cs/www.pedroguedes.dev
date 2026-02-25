@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry } from "astro:content";
-import Span from "./Span.astro";
+import Paragraph from "./Paragraph.astro";
 
 type Props = {
   skill: CollectionEntry<"skills">;
@@ -10,7 +10,7 @@ const { skill } = Astro.props;
 ---
 
 <div class="skill-card">
-  <Span text={skill.data.title.toLowerCase()} variant="contrast" fontSize="md" bold />
+  <Paragraph text={skill.data.title} variant="contrast" fontSize="md" bold />
   <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
     <path d={skill.data.svgPath}></path>
   </svg>

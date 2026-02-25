@@ -1,6 +1,6 @@
 ---
 import { BadgeCheck, Terminal, Globe, Cog } from '@lucide/astro'
-import Span from './Span.astro'
+import Paragraph from './Paragraph.astro'
 
 type Props = {
     category: string
@@ -19,7 +19,7 @@ const other = category === 'other'
     {cli ? <Terminal class='icon icon-md icon-contrast' /> : null}
     {web ? <Globe class='icon icon-md icon-contrast' /> : null}
     {other ? <Cog class='icon icon-md icon-contrast' /> : null}
-    <Span text={category.toLowerCase()} variant='contrast' fontSize='md' bold />
+    <Paragraph text={category.toLowerCase()} variant='contrast' fontSize='md' bold />
 </a>
 
 <style>

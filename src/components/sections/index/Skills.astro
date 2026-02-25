@@ -1,15 +1,23 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 import Section from "../../layout/Section.astro";
 import SkillCard from "../../ui/SkillCard.astro";
 
-const skills: CollectionEntry<"skills">[] = await getCollection("skills");
+const skills = await getCollection("skills");
+const skillsSorted = skills.sort((a, b) => {
+  if (a.data.category === "tools") return 1;
+  if (b.data.category === "tools") return -1;
+  if (a.data.category === "other") return 1;
+  if (b.data.category === "other") return -1;
+  if (a.data.category != b.data.category) return a.data.category.localeCompare(b.data.category);
+  return a.data.title.localeCompare(b.data.title);
+});
 ---
 
 <Section id="skills" title="SKILLS" variant="base">
   <div class="skills-layout">
-    {skills.map((skill) => <SkillCard skill={skill} />)}
+    {skillsSorted.map((skill) => <SkillCard skill={skill} />)}
   </div>
 </Section>
 

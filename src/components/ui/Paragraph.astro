@@ -7,46 +7,50 @@ type Props = {
   variant?: Variant;
   fontSize?: FontSize;
   bold?: boolean;
+  alignLeft?: boolean
 };
 
-const { text, variant = "contrast", fontSize = 'sm', bold = false } = Astro.props;
+const { text, variant = "contrast", fontSize = 'sm', bold = false, alignLeft = false } = Astro.props;
 ---
 
-<span class={`span ${variant} ${fontSize} ${bold ? 'bold' : null}`}>
+<p class={`paragraph ${variant} ${fontSize} ${bold ? 'bold' : null} ${alignLeft ? 'align-left' : null}`}>
   {text}
-</span>
+</p>
 
 
 <style>
-  .span {
+  .paragraph {
     text-align: center;
     line-height: 1.5;
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-md);
   }
-  .span.base {
+  .paragraph.base {
     color: var(--color-base);
   }
-  .span.contrast {
+  .paragraph.contrast {
     color: var(--color-contrast);
   }
-  .span.primary {
+  .paragraph.primary {
     color: var(--color-primary);
   }
-  .span.featured {
+  .paragraph.featured {
     color: var(--color-featured-contrast);
   }
-  .span.sm {
+  .paragraph.sm {
     font-size: var(--font-size-sm);
   }
-  .span.md {
+  .paragraph.md {
     font-size: var(--font-size-md);
   }
-  .span.lg {
+  .paragraph.lg {
     font-size: var(--font-size-lg);
   }
-  .span.bold {
+  .paragraph.bold {
     font-weight: var(--font-weight-lg);
+  }
+  .paragraph.align-left {
+    text-align: left;
   }
 </style>

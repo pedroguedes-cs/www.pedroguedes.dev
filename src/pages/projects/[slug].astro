@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Container from "../../components/layout/Container.astro";
 import Button from "../../components/ui/Button.astro";
-import Span from "../../components/ui/Span.astro";
+import Paragraph from "../../components/ui/Paragraph.astro";
 
 import { BadgeCheck } from "@lucide/astro";
 
@@ -36,7 +36,7 @@ const featured = project.data.featured;
 const enoughSlides = project.data.images.length > 1;
 ---
 
-<BaseLayout title={project.data.title}>
+<BaseLayout title={`Projects | ${project.data.title}`}>
   <Container>
     <div class="project-page-layout">
       <Button href="/projects" label="All Projects" variant="contrast" />
@@ -45,16 +45,16 @@ const enoughSlides = project.data.images.length > 1;
           featured ? (
             <div class="featured-pill">
               <BadgeCheck class="icon icon-sm icon-featured-contrast" />
-              <Span text="featured" variant="featured" fontSize="sm" bold />
+              <Paragraph text="featured" variant="featured" fontSize="sm" bold />
             </div>
           ) : null
         }
 
         <div class="project-main-info">
           <div class="project-intro">
-            <h1 class="h1">{project.data.title.toUpperCase()}</h1>
-            <Span text={project.data.category} bold />
-            <p class="project-description">{project.data.description}</p>
+            <h1 class="h1">{project.data.title}</h1>
+            <Paragraph text={project.data.category} bold />
+            <Paragraph text={project.data.description} />
           </div>
 
           {
@@ -88,7 +88,7 @@ const enoughSlides = project.data.images.length > 1;
         </div>
 
         <div class="project-stack-wrapper">
-          <Span text="STACK" bold />
+          <Paragraph text="STACK" bold />
           <ul>
             {project.data.tags.map((t) => <li>{t}</li>)}
           </ul>
@@ -97,7 +97,7 @@ const enoughSlides = project.data.images.length > 1;
         {
           demo ? (
             <div class="project-demo-wrapper">
-              <Span text="WATCH THE DEMO" bold />
+              <Paragraph text="DEMO" bold />
               <div class="demo-video-wrapper">
                 <iframe
                   src={`https://www.youtube.com/embed/${demo}`}
@@ -114,7 +114,7 @@ const enoughSlides = project.data.images.length > 1;
         {
           repo ? (
             <div class="project-repo-wrapper">
-              <Span text="REPOSITORY" bold />
+              <Paragraph text="REPOSITORY" bold />
               <Button href={repo} label="Repository" blank />
             </div>
           ) : null
@@ -123,7 +123,7 @@ const enoughSlides = project.data.images.length > 1;
         {
           website ? (
             <div class="project-website-wrapper">
-              <Span text="VISIT THE WEBSITE" bold />
+              <Paragraph text="WEBSITE" bold />
               <Button href={website} label="Website" blank />
             </div>
           ) : null
@@ -186,14 +186,6 @@ const enoughSlides = project.data.images.length > 1;
     font-weight: var(--font-weight-xl);
     color: var(--color-contrast);
   }
-  .project-description {
-    text-align: center;
-    line-height: 1.5;
-    font-family: var(--font-family);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-md);
-    color: var(--color-contrast);
-  }
   .swiper-project-details,
   .project-image-wrapper {
     width: 100%;
@@ -210,7 +202,7 @@ const enoughSlides = project.data.images.length > 1;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: left;
   }
   .project-stack-wrapper,
   .project-demo-wrapper,

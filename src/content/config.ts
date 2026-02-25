@@ -1,12 +1,17 @@
 import { defineCollection, z } from "astro:content";
-import { PROJECT_CATEGORIES, SKILL_CATEGORIES, PROJECT_TAGS } from "./constants";
-
+import {
+  PROJECT_CATEGORIES,
+  SKILL_CATEGORIES,
+  PROJECT_TAGS,
+} from "./constants";
 
 const projects = defineCollection({
   type: "content",
-  schema: ({image}) => z.object({
+  schema: ({ image }) =>
+    z.object({
       category: z.enum(PROJECT_CATEGORIES),
       title: z.string(),
+      summary: z.string(),
       description: z.string(),
       tags: z.array(z.enum(PROJECT_TAGS)),
       repo: z.string().url().optional(),
@@ -17,8 +22,8 @@ const projects = defineCollection({
         z.object({
           src: image(),
           alt: z.string(),
-        })
-      )
+        }),
+      ),
     }),
 });
 

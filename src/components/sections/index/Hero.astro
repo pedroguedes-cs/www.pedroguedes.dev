@@ -2,7 +2,7 @@
 import pedroImage from "../../../assets/pedro.jpeg";
 import Container from "../../layout/Container.astro";
 import Button from "../../ui/Button.astro";
-import Span from "../../ui/Span.astro";
+import Paragraph from "../../ui/Paragraph.astro";
 ---
 
 <section id="hero">
@@ -11,9 +11,9 @@ import Span from "../../ui/Span.astro";
       <img src={pedroImage.src} class="hero-image" alt="Pedro Guedes" />
       <div class="hero-content">
         <div class="hero-text-wrapper">
-          <Span text="hi, I'm" variant="contrast" fontSize="md" bold />
+          <Paragraph text="Hi, I'm" variant="contrast" fontSize="md" bold />
           <h1 class="h1">Pedro Guedes</h1>
-          <Span text="computer science student" variant="contrast" fontSize="md" bold />
+          <Paragraph text="Computer Science student" variant="contrast" fontSize="md" bold />
         </div>
         <div class="buttons-wrapper">
           <Button href="/projects" label="Projects" variant="primary" />
