@@ -1,0 +1,44 @@
+---
+import { MailCheck } from "@lucide/astro";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/layout/Container.astro";
+import Span from "../components/ui/Span.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<BaseLayout title="Message sent">
+  <Container>
+    <div class="message-page-layout">
+      <MailCheck class="icon icon-lg icon-primary" />
+      <h1 class="h1">MESSAGE SENT SUCCESSFULLY</h1>
+      <Span
+        text="Thank you for reaching out. Pedro will get back to you soon. A confirmation email has been sent."
+        fontSize="sm"
+        variant="contrast"
+      />
+      <Button href="/" label="home" variant="primary" />
+    </div>
+  </Container>
+</BaseLayout>
+
+<style>
+  .message-page-layout {
+    width: 100%;
+    min-height: calc(100dvh - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+    padding-block: var(--section-padding);
+  }
+  .h1 {
+    text-align: center;
+    line-height: 1.2;
+    font-family: var(--font-family);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-xl);
+    color: var(--color-contrast);
+  }
+</style>
