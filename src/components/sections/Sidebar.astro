@@ -82,21 +82,21 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
     right: 0;
     left: 0;
     z-index: 998;
-    background-color: var(--overlay-color);
+    /*background-color: var(--overlay-color);*/
 
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--sidebar-transition);
   }
   .overlay.show {
-    opacity: 1;
+    /*opacity: 1;*/
     pointer-events: auto;
   }
   .sidebar {
     position: fixed;
     z-index: 999;
-    top: 0;
-    bottom: 0;
+    top: var(--space-sm);
+    bottom: var(--space-sm);
     left: 0;
     width: 80%;
     max-width: var(--sidebar-max-width);
@@ -108,6 +108,8 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
     align-items: center;
     gap: var(--space-md);
     padding: var(--space-md);
+    border: var(--border-md) var(--color-base) solid;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     background-color: var(--color-base-light);
 
     transition: transform var(--sidebar-transition);
