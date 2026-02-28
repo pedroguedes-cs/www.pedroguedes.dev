@@ -32,9 +32,7 @@ const {
 } = Astro.props;
 
 const pageTitle =
-  title === WEBSITE_NAME
-    ? WEBSITE_NAME
-    : `${title} | Pedro Guedes`;
+  title === WEBSITE_NAME ? WEBSITE_NAME : `${title} | Pedro Guedes`;
 
 const canonicalUrl = new URL(Astro.url.pathname, WEBSITE_URL).toString();
 ---
@@ -44,7 +42,11 @@ const canonicalUrl = new URL(Astro.url.pathname, WEBSITE_URL).toString();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="robots" content={noIndex ? "noindex,nofollow" : "index,follow"} />
+    <meta
+      name="robots"
+      content={noIndex ? "noindex,nofollow" : "index,follow"}
+    />
+    <meta name="theme-color" content="#0a0a0a" id="theme-color-meta" />
     <title>{pageTitle}</title>
 
     <!-- SEO -->
@@ -85,14 +87,19 @@ const canonicalUrl = new URL(Astro.url.pathname, WEBSITE_URL).toString();
 
     <!-- LIGHT MODE -->
     <script is:inline>
-      const lightMode = localStorage.getItem("light-mode");
+      let stored = localStorage.getItem("light-mode")
 
-      if (lightMode === null) {
-        localStorage.setItem("light-mode", JSON.stringify(false));
-        document.documentElement.classList.add("dark-mode");
-      } else if (JSON.parse(lightMode) === false) {
-        document.documentElement.classList.add("dark-mode");
+      if (stored === null) {
+        stored = "false"
+        localStorage.setItem("light-mode", stored);
       }
+
+      let isLight = JSON.parse(stored);
+
+      document.documentElement.classList.toggle("dark-mode", !isLight);
+
+      const meta = document.querySelector('meta[name="theme-color"]');
+      meta?.setAttribute("content", isLight ? "#f5f5f5" : "#0a0a0a");
     </script>
   </head>
   <body>

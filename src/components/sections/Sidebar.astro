@@ -44,27 +44,15 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
     </a>
   </nav>
   <div class="sidebar-social-media-wrapper">
-    <a
-      href={GITHUB_LINK}
-      class="social-media-link"
-      target="_blank"
-    >
+    <a href={GITHUB_LINK} class="social-media-link" target="_blank">
       <Github class="icon icon-md icon-contrast" />
       <span>GitHub</span>
     </a>
-    <a
-      href={LINKEDIN_LINK}
-      class="social-media-link"
-      target="_blank"
-    >
+    <a href={LINKEDIN_LINK} class="social-media-link" target="_blank">
       <Linkedin class="icon icon-md icon-contrast" />
       <span>LinkedIn</span>
     </a>
-    <a
-      href={EMAIL_LINK}
-      class="social-media-link"
-      target="_blank"
-    >
+    <a href={EMAIL_LINK} class="social-media-link" target="_blank">
       <Mail class="icon icon-md icon-contrast" />
       <span>Mail</span>
     </a>
@@ -162,20 +150,28 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
 
   navLinks.forEach((navlink) => {
     navlink.addEventListener("click", toggleSidebar);
-  })
+  });
   menuButton?.addEventListener("click", toggleSidebar);
   overlay?.addEventListener("click", toggleSidebar);
 
-
+  function applyBrowserThemeColor() {
+    const isLight = !document.documentElement.classList.contains("dark-mode");
+    meta?.setAttribute("content", isLight ? "#f5f5f5" : "#0a0a0a");
+  }
 
   function saveLightMode() {
-    localStorage.setItem('light-mode', JSON.stringify(!document.documentElement.classList.contains('dark-mode')))
+    localStorage.setItem(
+      "light-mode",
+      JSON.stringify(!document.documentElement.classList.contains("dark-mode")),
+    );
   }
   function toggleLightMode() {
     document.documentElement.classList.toggle("dark-mode");
-    saveLightMode()
+    saveLightMode();
+    applyBrowserThemeColor();
   }
 
+  const meta = document.querySelector('meta[name="theme-color"]');
   const lightModeButton = document.querySelector(".light-mode-button");
   lightModeButton?.addEventListener("click", toggleLightMode);
 </script>
