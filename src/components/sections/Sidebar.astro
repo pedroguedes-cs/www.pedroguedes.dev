@@ -150,6 +150,7 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
 </style>
 
 <script>
+  const navLinks = document.querySelectorAll(".navlink");
   const sidebar = document.querySelector(".sidebar");
   const overlay = document.querySelector(".overlay");
   const menuButton = document.querySelector(".header-menu-button");
@@ -158,8 +159,13 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
     overlay?.classList.toggle("show");
   }
 
+  navLinks.forEach((navlink) => {
+    navlink.addEventListener("click", toggleSidebar);
+  })
   menuButton?.addEventListener("click", toggleSidebar);
   overlay?.addEventListener("click", toggleSidebar);
+
+
 
   function saveLightMode() {
     localStorage.setItem('light-mode', JSON.stringify(!document.documentElement.classList.contains('dark-mode')))

@@ -2,29 +2,55 @@
 import type { Variant } from "../../design-system/variant";
 
 interface Props {
-  href: string;
+  href?: string;
   label: string;
   outline?: boolean;
   variant?: Variant;
-  blank?: boolean
-};
+  blank?: boolean;
+  submit?: boolean;
+  heroFullWidth?: boolean;
+}
 
-const { href = "#", label, outline = false, variant = "primary", blank = false } = Astro.props;
+const {
+  href,
+  label,
+  outline = false,
+  variant = "primary",
+  blank = false,
+  submit = false,
+  heroFullWidth = false,
+} = Astro.props;
 ---
 
-<a href={href} class={`button ${variant} ${outline ? 'outline' : null}`} target={blank ? '_blank' : '_self'}>
-  {label}
-</a>
-
+{
+  href ? (
+    <a
+      href={href}
+      class={`button ${variant} ${outline ? "outline" : null} ${heroFullWidth ? "hero-full-width" : "null"}`}
+      target={blank ? "_blank" : "_self"}
+    >
+      {label}
+    </a>
+  ) : (
+    <button
+      class={`button ${variant} ${outline ? "outline" : null} ${heroFullWidth ? "hero-full-width" : "null"}`}
+      type={submit ? "submit" : "button"}
+    >
+      {label}
+    </button>
+  )
+}
 
 <style>
   .button {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-md) var(--space-lg);
     border: solid var(--border-md);
     border-radius: var(--radius-md);
-      
+
     font-family: var(--font-family);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-lg);
@@ -65,5 +91,18 @@ const { href = "#", label, outline = false, variant = "primary", blank = false }
   }
   .button.outline.featured {
     color: var(--color-featured-base);
+  }
+  .button.hero-full-width {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .button {
+      padding: var(--space-sm) var(--space-md);
+    }
+    .button.hero-full-width {
+      width: auto;
+      flex: 1;
+    }
   }
 </style>

@@ -14,7 +14,7 @@ interface Props {
 const { project, projectsPreview = false, featured = false } = Astro.props;
 ---
 
-<div class={`project-card ${featured ? 'featured' : null}`}>
+<div class={`project-card ${featured ? 'featured' : null} ${projectsPreview ? 'projects-preview' : null}`}>
   <div class="card-image-wrapper">
     <Image
       src={project.data.images[0].src}
@@ -24,13 +24,13 @@ const { project, projectsPreview = false, featured = false } = Astro.props;
   </div>
   <div class="card-body">
     <div class="card-text-wrapper">
-      <Paragraph text={project.data.title} variant={featured ? "featured" : "contrast"} fontSize="md" bold />
-      <Paragraph text={project.data.summary} variant={featured ? "featured" : "contrast"} fontSize="sm" />
+      <Paragraph text={project.data.title} variant={featured ? "featured" : projectsPreview ? "base" : "contrast"} fontSize="md" bold />
+      <Paragraph text={project.data.summary} variant={featured ? "featured" : projectsPreview ? "base" : "contrast"} fontSize="sm" />
     </div>
     <Button
       href={`/projects/${project.slug}`}
       label="Details"
-      variant={projectsPreview ? "contrast" : featured ? "featured" : "primary"}
+      variant={projectsPreview ? "base" : featured ? "featured" : "primary"}
     />
   </div>
 </div>
@@ -52,6 +52,9 @@ const { project, projectsPreview = false, featured = false } = Astro.props;
   }
   .project-card.featured {
     background-color: var(--color-featured-base);
+  }
+  .project-card.projects-preview {
+    background-color: var(--color-primary);
   }
   .card-image-wrapper {
     width: 100%;

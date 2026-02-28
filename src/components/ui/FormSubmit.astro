@@ -1,6 +1,7 @@
 ---
 import { EMAIL_USER } from "../../config/pedro";
 import { WEBSITE_URL } from "../../config/website";
+import Button from "./Button.astro";
 
 const urlNext = `${WEBSITE_URL}/message`;
 const messageUser = "User message - test";
@@ -46,7 +47,7 @@ const messageWebsite = "Website message - test";
     placeholder="message"
     required></textarea>
 
-  <button type="submit" class="form-button">Send Message</button>
+  <Button submit label="Send Message" variant="primary" />
 </form>
 
 <style>
@@ -90,18 +91,5 @@ const messageWebsite = "Website message - test";
   .form-textarea:focus {
     outline: none;
     border-color: var(--color-primary);
-  }
-
-  .form-button {
-    background-color: var(--color-primary);
-    padding: var(--space-sm) var(--space-md);
-    border: solid var(--border-md) var(--color-primary);
-    border-radius: var(--radius-md);
-
-    font-family: var(--font-family);
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-lg);
-    color: var(--color-base);
-    cursor: pointer;
   }
 </style>
