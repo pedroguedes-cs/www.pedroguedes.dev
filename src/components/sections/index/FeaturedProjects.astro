@@ -7,7 +7,11 @@ import ProjectCard from "../../ui/ProjectCard.astro";
 import Button from "../../ui/Button.astro";
 
 const projects: CollectionEntry<"projects">[] = await getCollection("projects");
-const featuredProjects = projects.filter((p) => p.data.featured);
+const featuredProjects = projects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => {
+    return a.data.title.localeCompare(b.data.title);
+  });
 ---
 
 <Section id="projects-preview" title="FEATURED PROJECTS" variant="base">

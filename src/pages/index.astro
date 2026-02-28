@@ -1,4 +1,6 @@
 ---
+import { WEBSITE_NAME, DEFAULT_WEBSITE_DESCRIPTION } from "../config/website";
+
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/sections/index/Hero.astro";
 import About from "../components/sections/index/About.astro";
@@ -7,7 +9,7 @@ import Skills from "../components/sections/index/Skills.astro";
 import Contact from "../components/sections/index/Contact.astro";
 ---
 
-<BaseLayout title="Pedro Guedes">
+<BaseLayout title={WEBSITE_NAME} description={DEFAULT_WEBSITE_DESCRIPTION}>
   <Hero />
   <About />
   <FeaturedProjects />

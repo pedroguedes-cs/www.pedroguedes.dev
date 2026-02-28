@@ -6,7 +6,7 @@ description: "A procedural map generator using the Diamond-Square algorithm, wri
 tags: ["C++"]
 repo: "https://github.com/pedroguedes-cs/procedural-map-generator"
 demo: "ZRfbxiADyK0"
-featured: true
+featured: false
 images:
   - src: ./cover.png
     alt: "Procedural Map Generator"

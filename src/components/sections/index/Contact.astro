@@ -1,33 +1,26 @@
 ---
+import { GITHUB_USER, GITHUB_LINK, LINKEDIN_USER, LINKEDIN_LINK, EMAIL_USER, EMAIL_LINK } from "../../../config/pedro"
+
 import { Github, Linkedin, Mail } from "@lucide/astro"
 import Section from "../../layout/Section.astro"
 import FormSubmit from "../../ui/FormSubmit.astro"
 import Paragraph from "../../ui/Paragraph.astro"
-
-const emailUser = "pedroguedescs@gmail.com"
-const emailLink = "mailto:pedroguedescs@gmail.com"
-
-const githubUser = "pedroguedes-cs"
-const githubLink = "https://github.com/pedroguedes-cs/"
-
-const linkedinUser = "pedroguedes-cs"
-const linkedinLink = "https://www.linkedin.com/in/pedroguedes-cs/"
 ---
 
 <Section id="contact" title="CONTACT" variant="base">
   <div class="contact-layout">
     <div class="social-media-wrapper">
-        <a href={githubLink} class="social-media-link" target="_blank">
+        <a href={GITHUB_LINK} class="social-media-link" target="_blank">
             <Github class="icon icon-md icon-contrast" />
-            <Paragraph text={githubUser} fontSize="md" variant="contrast" bold />
+            <Paragraph text={GITHUB_USER} fontSize="md" variant="contrast" bold />
         </a>
-        <a href={linkedinLink} class="social-media-link" target="_blank">
+        <a href={LINKEDIN_LINK} class="social-media-link" target="_blank">
             <Linkedin class="icon icon-md icon-contrast" />
-            <Paragraph text={linkedinUser} fontSize="md" variant="contrast" bold />
+            <Paragraph text={LINKEDIN_USER} fontSize="md" variant="contrast" bold />
         </a>
-        <a href={emailLink} class="social-media-link" target="_blank">
+        <a href={EMAIL_LINK} class="social-media-link" target="_blank">
             <Mail class="icon icon-md icon-contrast" />
-            <Paragraph text={emailUser} fontSize="md" variant="contrast" bold />
+            <Paragraph text={EMAIL_USER} fontSize="md" variant="contrast" bold />
         </a>
     </div>
     <FormSubmit />

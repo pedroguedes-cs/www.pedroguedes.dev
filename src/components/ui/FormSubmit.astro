@@ -1,17 +1,19 @@
 ---
-const email = "pedroguedescs@gmail.com";
-const url = "https://www.pedroguedes.dev/message";
+import { EMAIL_USER } from "../../config/pedro";
+import { WEBSITE_URL } from "../../config/website";
+
+const urlNext = `${WEBSITE_URL}/message`;
 const messageUser = "User message - test";
 const messageWebsite = "Website message - test";
 ---
 
 <form
   class="contact-form"
-  action={`https://formsubmit.co/${email}`}
+  action={`https://formsubmit.co/${EMAIL_USER}`}
   method="POST"
 >
   <!-- User -->
-  <input type="hidden" name="_next" value={url} />
+  <input type="hidden" name="_next" value={urlNext} />
   <input type="hidden" name="_autoresponse" value={messageUser} />
 
   <!-- Website -->

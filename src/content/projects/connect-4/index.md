@@ -6,7 +6,7 @@ description: "A terminal version of the classic Connect 4 game built in C++. It 
 tags: ["C++"]
 repo: "https://github.com/pedroguedes-cs/connect-4"
 demo: "HOrA5nEC7xU"
-featured: true
+featured: false
 images:
   - src: ./cover.png
     alt: "Connect 4"

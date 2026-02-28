@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import Button from "./Button.astro";
 import Paragraph from "./Paragraph.astro";
 
-type Props = {
+interface Props {
   project: CollectionEntry<"projects">;
   projectsPreview?: boolean;
   featured?: boolean;
@@ -43,7 +43,7 @@ const { project, projectsPreview = false, featured = false } = Astro.props;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: var(--space-lg);
 

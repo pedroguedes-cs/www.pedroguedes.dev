@@ -1,9 +1,9 @@
 ---
-import type { Variant } from "../variant";
+import type { Variant } from "../../design-system/variant";
 import Container from "./Container.astro";
 import Heading from "../ui/Heading.astro";
 
-type Props = {
+interface Props {
   id: string;
   title: string;
   variant?: Variant;

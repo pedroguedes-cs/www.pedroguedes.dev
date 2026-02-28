@@ -1,4 +1,6 @@
 ---
+import { GITHUB_LINK, LINKEDIN_LINK, EMAIL_LINK } from "../../config/pedro";
+
 import {
   House,
   UserRound,
@@ -43,7 +45,7 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
   </nav>
   <div class="sidebar-social-media-wrapper">
     <a
-      href="https://github.com/pedroguedes-cs"
+      href={GITHUB_LINK}
       class="social-media-link"
       target="_blank"
     >
@@ -51,7 +53,7 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
       <span>GitHub</span>
     </a>
     <a
-      href="https://www.linkedin.com/in/pedroguedes-cs/"
+      href={LINKEDIN_LINK}
       class="social-media-link"
       target="_blank"
     >
@@ -59,7 +61,7 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
       <span>LinkedIn</span>
     </a>
     <a
-      href="mailto:pedroguedescs@gmail.com"
+      href={EMAIL_LINK}
       class="social-media-link"
       target="_blank"
     >
