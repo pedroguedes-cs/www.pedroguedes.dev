@@ -106,12 +106,17 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
     background-color: var(--color-base-light);
     border-top: var(--border-sm) var(--color-base) solid;
     cursor: pointer;
+    transition: filter var(--hover-transition);
   }
   @media (hover: hover) and (pointer: fine) {
     .light-mode-button:hover,
     .navlink:hover {
-      filter: var(--icon-wrapper-filter);
+      filter: var(--base-hover);
     }
+  }
+  .light-mode-button:active,
+  .navlink:active {
+    filter: var(--base-active);
   }
 </style>
 
@@ -119,7 +124,7 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
   const menu = document.querySelector(".dropdown-menu");
   const closeMenuButton = document.querySelector(".close-menu-button");
   const openMenuButton = document.querySelector(".open-menu-button");
-  const navLinks = document.querySelectorAll(".navlink")
+  const navLinks = document.querySelectorAll(".navlink");
 
   function openMenu() {
     // MENU
@@ -136,8 +141,8 @@ const projectsHref = currentPath === "/projects" ? "#" : "/projects";
   openMenuButton?.addEventListener("click", openMenu);
   closeMenuButton?.addEventListener("click", closeMenu);
   navLinks.forEach((link) => {
-    link.addEventListener('click', closeMenu)
-  })
+    link.addEventListener("click", closeMenu);
+  });
 
   // THEME
   function applyBrowserThemeColor() {

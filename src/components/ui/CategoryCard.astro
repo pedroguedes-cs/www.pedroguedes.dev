@@ -1,37 +1,52 @@
 ---
-import { BadgeCheck, Terminal, Globe, Cog } from '@lucide/astro'
-import Paragraph from './Paragraph.astro'
+import { BadgeCheck, Terminal, Globe, Cog } from "@lucide/astro";
+import Paragraph from "./Paragraph.astro";
 
 interface Props {
-    category: string
+  category: string;
 }
 
-const {category} = Astro.props
+const { category } = Astro.props;
 
-const featured = category === 'featured'
-const cli = category === 'cli'
-const web = category === 'web';
-const other = category === 'other'
+const featured = category === "featured";
+const cli = category === "cli";
+const web = category === "web";
+const other = category === "other";
 ---
 
 <a href={`#${category}`} class="category-card">
-    {featured ? <BadgeCheck class='icon icon-md icon-contrast' /> : null}
-    {cli ? <Terminal class='icon icon-md icon-contrast' /> : null}
-    {web ? <Globe class='icon icon-md icon-contrast' /> : null}
-    {other ? <Cog class='icon icon-md icon-contrast' /> : null}
-    <Paragraph text={category.toLowerCase()} variant='contrast' fontSize='md' bold />
+  {featured ? <BadgeCheck class="icon icon-md icon-contrast" /> : null}
+  {cli ? <Terminal class="icon icon-md icon-contrast" /> : null}
+  {web ? <Globe class="icon icon-md icon-contrast" /> : null}
+  {other ? <Cog class="icon icon-md icon-contrast" /> : null}
+  <Paragraph
+    text={category.toLowerCase()}
+    variant="contrast"
+    fontSize="md"
+    bold
+  />
 </a>
 
 <style>
-    .category-card {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: var(--space-md);
+  .category-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
 
-        background-color: var(--color-base-light);
-        padding: var(--space-sm) var(--space-md);
-        border: none;
-        border-radius: var(--radius-lg);
+    background-color: var(--color-base-light);
+    padding: var(--space-sm) var(--space-md);
+    border: none;
+    border-radius: var(--radius-lg);
+    transition: filter var(--hover-transition), transform var(--active-transition);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .category-card:hover {
+      filter: var(--base-hover);
     }
+  }
+  .category-card:active {
+    transform: translateY(1px);
+    filter: var(--base-active);
+  }
 </style>

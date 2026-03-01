@@ -56,6 +56,9 @@ const {
     font-weight: var(--font-weight-lg);
 
     cursor: pointer;
+    transition:
+      filter var(--hover-transition),
+      transform var(--active-transition);
   }
   .button.primary {
     background-color: var(--color-primary);
@@ -104,5 +107,36 @@ const {
       width: auto;
       flex: 1;
     }
+  }
+  
+  @media (hover: hover) and (pointer: fine) {
+    .button.primary:hover {
+      filter: var(--primary-hover);
+    }
+    .button.base:hover {
+      filter: var(--base-hover);
+    }
+    .button.contrast:hover {
+      filter: var(--contrast-hover);
+    }
+    .button.featured:hover {
+      filter: var(--featured-hover);
+    }
+  }
+
+  .button:active {
+    transform: translateY(1px);
+  }
+  .button.primary:active {
+    filter: var(--primary-active);
+  }
+  .button.base:active {
+    filter: var(--base-active);
+  }
+  .button.contrast:active {
+    filter: var(--contrast-active);
+  }
+  .button.featured:active {
+    filter: var(--featured-active);
   }
 </style>

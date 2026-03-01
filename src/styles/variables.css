@@ -91,8 +91,21 @@
   /* Header */
   --header-height: 5rem;
 
-  /* Icon wrapper */
-  --icon-wrapper-filter: brightness(0.9);
+  /* Filters */
+  --base-hover: brightness(0.9);
+  --base-active: brightness(0.8);
+
+  --contrast-hover: brightness(1.35);
+  --contrast-active: brightness(0.9);
+
+  --primary-hover: brightness(1.2);
+  --primary-active: brightness(0.9);
+
+  --featured-hover: brightness(0.9);
+  --featured-active: brightness(0.8);
+
+  --hover-transition: 200ms ease;
+  --active-transition: 120ms ease;
 }
 
 html.dark-mode {
@@ -105,6 +118,11 @@ html.dark-mode {
   --color-contrast-dark: hsl(0, 0%, 92%);
 
   --color-neutral: hsl(0, 0%, 18%);
-  --icon-wrapper-filter: brightness(1.2);
+
+  --base-hover: brightness(1.35);
+  --base-active: brightness(0.9);
+  --contrast-hover: brightness(0.9);
+  --contrast-active: brightness(0.8);
+
   --swiper-pagination-bullet-inactive-color: var(--color-contrast);
 }

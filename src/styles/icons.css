@@ -7,6 +7,7 @@
   background-color: var(--color-base-light);
   padding: 8px;
   cursor: pointer;
+  transition: filter var(--hover-transition), transform var(--active-transition);
 }
 
 .icon {
@@ -48,6 +49,10 @@
 
 @media (hover: hover) and (pointer: fine) {
   .icon-wrapper:hover {
-    filter: var(--icon-wrapper-filter);
+    filter: var(--base-hover);
   }
 }
+  .icon-wrapper:active {
+    transform: translateY(1px);
+    filter: var(--base-active);
+  }
