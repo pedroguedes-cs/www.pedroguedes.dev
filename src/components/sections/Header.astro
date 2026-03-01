@@ -1,44 +1,163 @@
 ---
-import { PanelLeft } from "@lucide/astro";
+import { GITHUB_LINK } from "../../config/pedro";
+
+import {
+  PanelTopOpen,
+  PanelTopClose,
+  Github,
+  House,
+  Laptop,
+  Send,
+  Contrast,
+} from "@lucide/astro";
 
 import Container from "../layout/Container.astro";
 import Heading from "../ui/Heading.astro";
+import Paragraph from "../ui/Paragraph.astro";
+
+const currentPath = Astro.url.pathname;
+const homeHref = currentPath === "/" ? "#" : "/";
+const projectsHref = currentPath === "/projects" ? "#" : "/projects";
 ---
 
 <header class="header">
   <Container>
-    <div class="header-layout">
-      <div class="icon-wrapper header-menu-button">
-        <PanelLeft class="icon icon-md icon-text" />
+    <div class="header-wrapper">
+      <div class="header-main">
+        <div class="icon-wrapper open-menu-button">
+          <PanelTopOpen class="icon icon-md icon-text" />
+        </div>
+        <div class="icon-wrapper close-menu-button hidden">
+          <PanelTopClose class="icon icon-md icon-text" />
+        </div>
+        <a href="#" class="icon-wrapper">
+          <Heading title="Pedro" variant="contrast" />
+        </a>
       </div>
-      <a href="#" class="icon-wrapper">
-        <Heading title="Pedro" variant="contrast" />
-      </a>
+
+      <nav class="dropdown-menu">
+        <a href={homeHref} class="navlink">
+          <House class="icon icon-sm icon-contrast" />
+          <Paragraph text="Home" fontSize="md" variant="contrast" />
+        </a>
+        <a href={projectsHref} class="navlink">
+          <Laptop class="icon icon-sm icon-contrast" />
+          <Paragraph text="Projects" fontSize="md" variant="contrast" />
+        </a>
+        <a href="/#contact" class="navlink">
+          <Send class="icon icon-sm icon-contrast" />
+          <Paragraph text="Contact" fontSize="md" variant="contrast" />
+        </a>
+        <div class="light-mode-button">
+          <Contrast class="icon icon-sm icon-contrast" />
+          <Paragraph text="Theme" fontSize="md" variant="contrast" />
+        </div>
+      </nav>
     </div>
   </Container>
 </header>
 
 <style>
   .header {
-    position: fixed;
-    z-index: 997;
-    top: var(--space-sm);
     width: 100%;
-
-    background-color: transparent;
+    padding-block: var(--space-sm);
+    background-color: var(--color-base);
   }
-  .header-layout {
+  .header-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-base-light);
+    border: var(--border-md) var(--color-base) solid;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .header-main {
     width: 100%;
     height: var(--header-height);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-md);
-
-    background-color: var(--color-base-light);
     padding: var(--space-sm) var(--space-md);
-    border: var(--border-md) var(--color-base) solid;
-    border-radius: var(--radius-md);
+  }
+  .open-menu-button.hidden,
+  .close-menu-button.hidden {
+    display: none;
+  }
+  .dropdown-menu {
+    display: none;
+  }
+  .dropdown-menu.show {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .light-mode-button,
+  .navlink {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background-color: var(--color-base-light);
+    border-top: var(--border-sm) var(--color-base) solid;
+    cursor: pointer;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .light-mode-button:hover,
+    .navlink:hover {
+      filter: var(--icon-wrapper-filter);
+    }
   }
 </style>
+
+<script>
+  const menu = document.querySelector(".dropdown-menu");
+  const closeMenuButton = document.querySelector(".close-menu-button");
+  const openMenuButton = document.querySelector(".open-menu-button");
+  const navLinks = document.querySelectorAll(".navlink")
+
+  function openMenu() {
+    // MENU
+    menu?.classList.add("show");
+    openMenuButton?.classList.add("hidden");
+    closeMenuButton?.classList.remove("hidden");
+  }
+  function closeMenu() {
+    menu?.classList.remove("show");
+    openMenuButton?.classList.remove("hidden");
+    closeMenuButton?.classList.add("hidden");
+  }
+
+  openMenuButton?.addEventListener("click", openMenu);
+  closeMenuButton?.addEventListener("click", closeMenu);
+  navLinks.forEach((link) => {
+    link.addEventListener('click', closeMenu)
+  })
+
+  // THEME
+  function applyBrowserThemeColor() {
+    const isLight = !document.documentElement.classList.contains("dark-mode");
+    meta?.setAttribute("content", isLight ? "#f5f5f5" : "#0a0a0a");
+  }
+
+  function saveLightMode() {
+    localStorage.setItem(
+      "light-mode",
+      JSON.stringify(!document.documentElement.classList.contains("dark-mode")),
+    );
+  }
+  function toggleLightMode() {
+    document.documentElement.classList.toggle("dark-mode");
+    saveLightMode();
+    applyBrowserThemeColor();
+  }
+
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const lightModeButton = document.querySelector(".light-mode-button");
+  lightModeButton?.addEventListener("click", toggleLightMode);
+</script>

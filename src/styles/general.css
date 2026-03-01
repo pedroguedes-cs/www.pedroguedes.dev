@@ -6,9 +6,12 @@ html {
 body {
   background-color: var(--color-base);
 }
+/*
+Fixed header:
+
 main {
   padding-top: var(--main-padding-top);
 }
 section {
     scroll-margin-top: var(--main-padding-top);
-}
+}*/

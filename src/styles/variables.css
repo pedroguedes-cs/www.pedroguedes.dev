@@ -31,7 +31,6 @@
   --color-featured-contrast: hsl(45, 90%, 78%);
 
   --color-neutral: hsl(0, 0%, 82%);
-  --overlay-color: hsla(220, 20%, 10%, 0.45);
   --swiper-pagination-color: var(--color-primary);
   --swiper-pagination-bullet-inactive-color: var(--color-contrast);
 
@@ -92,10 +91,6 @@
   /* Header */
   --header-height: 5rem;
 
-  /* Sidebar transition */
-  --sidebar-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  --sidebar-max-width: 400px;
-
   /* Icon wrapper */
   --icon-wrapper-filter: brightness(0.9);
 }
@@ -110,8 +105,6 @@ html.dark-mode {
   --color-contrast-dark: hsl(0, 0%, 92%);
 
   --color-neutral: hsl(0, 0%, 18%);
-  --overlay-color: hsla(0, 0%, 100%, 0.08);
-
   --icon-wrapper-filter: brightness(1.2);
   --swiper-pagination-bullet-inactive-color: var(--color-contrast);
 }

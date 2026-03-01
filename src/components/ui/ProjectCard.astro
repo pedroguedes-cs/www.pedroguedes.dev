@@ -24,13 +24,13 @@ const { project, projectsPreview = false, featured = false } = Astro.props;
   </div>
   <div class="card-body">
     <div class="card-text-wrapper">
-      <Paragraph text={project.data.title} variant={featured ? "featured" : projectsPreview ? "base" : "contrast"} fontSize="md" bold />
-      <Paragraph text={project.data.summary} variant={featured ? "featured" : projectsPreview ? "base" : "contrast"} fontSize="sm" />
+      <Paragraph text={project.data.title} variant={featured ? "featured" : "contrast"} fontSize="md" bold />
+      <Paragraph text={project.data.summary} variant={featured ? "featured" : "contrast"} fontSize="sm" />
     </div>
     <Button
       href={`/projects/${project.slug}`}
       label="Details"
-      variant={projectsPreview ? "base" : featured ? "featured" : "primary"}
+      variant={projectsPreview ? "contrast" : featured ? "featured" : "primary"}
     />
   </div>
 </div>
@@ -54,7 +54,7 @@ const { project, projectsPreview = false, featured = false } = Astro.props;
     background-color: var(--color-featured-base);
   }
   .project-card.projects-preview {
-    background-color: var(--color-primary);
+    
   }
   .card-image-wrapper {
     width: 100%;
