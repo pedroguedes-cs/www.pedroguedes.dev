@@ -14,7 +14,7 @@ interface Props {
 const { project, projectsPreview = false, featured = false } = Astro.props;
 ---
 
-<div class={`project-card ${featured ? 'featured' : null} ${projectsPreview ? 'projects-preview' : null}`}>
+<div class={`project-card ${featured ? 'featured' : null} ${projectsPreview ? 'projects-preview' : null}`} data-animate={projectsPreview ? null : "zoom-in"}>
   <div class="card-image-wrapper">
     <Image
       src={project.data.images[0].src}

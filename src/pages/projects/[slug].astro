@@ -42,7 +42,7 @@ const enoughSlides = project.data.images.length > 1;
       <div class="project-details">
         {
           featured ? (
-            <div class="featured-pill">
+            <div class="featured-pill" data-animate="fade-up">
               <BadgeCheck class="icon icon-sm icon-featured-contrast" />
               <Paragraph text="featured" variant="featured" fontSize="sm" bold />
             </div>
@@ -89,7 +89,7 @@ const enoughSlides = project.data.images.length > 1;
         <div class="project-stack-wrapper">
           <Paragraph text="STACK" bold />
           <ul>
-            {project.data.tags.map((t) => <li>{t}</li>)}
+            {project.data.tags.map((t) => <li data-animate="slide-left">{t}</li>)}
           </ul>
         </div>
 

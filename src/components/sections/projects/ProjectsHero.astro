@@ -24,7 +24,7 @@ const activeCategories = allCategories.filter((c) => allProjects.some((p) => p.d
   <Container>
     <div class="projects-hero-layout">
       <h1 class="h1">PROJECTS</h1>
-      <div class="category-card-grid">
+      <div class="category-card-grid" data-animate="zoom-in">
         {hasFeaturedProjects ? <CategoryCard category="featured" /> : null}
         {activeCategories.map((c) => <CategoryCard category={c} />)}
       </div>

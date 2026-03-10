@@ -12,6 +12,7 @@ const messageWebsite = "📬 New message from your website.";
   class="contact-form"
   action={`https://formsubmit.co/${EMAIL_USER}`}
   method="POST"
+  data-animate="slide-left"
 >
   <!-- User -->
   <input type="hidden" name="_next" value={urlNext} />
@@ -45,7 +46,8 @@ const messageWebsite = "📬 New message from your website.";
     name="message"
     class="form-textarea"
     placeholder="message"
-    required></textarea>
+    required
+  />
 
   <Button submit label="Send Message" variant="primary" />
 </form>

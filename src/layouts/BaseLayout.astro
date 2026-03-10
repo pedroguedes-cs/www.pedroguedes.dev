@@ -11,6 +11,7 @@ import "../styles/reset.css";
 import "../styles/variables.css";
 import "../styles/general.css";
 import "../styles/icons.css";
+import "../styles/animations.css";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -86,10 +87,10 @@ const canonicalUrl = new URL(Astro.url.pathname, WEBSITE_URL).toString();
 
     <!-- LIGHT MODE -->
     <script is:inline>
-      let stored = localStorage.getItem("light-mode")
+      let stored = localStorage.getItem("light-mode");
 
       if (stored === null) {
-        stored = "false"
+        stored = "false";
         localStorage.setItem("light-mode", stored);
       }
 
@@ -107,5 +108,11 @@ const canonicalUrl = new URL(Astro.url.pathname, WEBSITE_URL).toString();
       <slot />
     </main>
     <Footer />
+    <script>
+      import { initScrollAnimations } from "../scripts/animations.ts";
+      document.addEventListener("DOMContentLoaded", () => {
+        initScrollAnimations();
+      });
+    </script>
   </body>
 </html>
